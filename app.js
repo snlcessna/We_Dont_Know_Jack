@@ -36,6 +36,13 @@ function printQuestion(array){
     return 0.5 - Math.random();
   })
 
+  //check for previous element and remove -JZ
+  if(document.getElementById('question-div')){
+    var child = document.getElementById('question-div');
+    var parent = child.parentNode;
+    parent.removeChild(child);
+  }
+
   //create question/answer div -JZ
   var questionDivEl = document.createElement('div');
   questionDivEl.setAttribute('id', 'question-div');
@@ -44,18 +51,18 @@ function printQuestion(array){
   //print question -JZ
   var questionEl = document.createElement('p');
   questionEl.textContent = array[number].question;
-  bodyEl.appendChild(questionEl);
+  questionDivEl.appendChild(questionEl);
 
   //print answers -JZ
   for(var i = 0; i < 4; i++){
     var answersEl = document.createElement('p');
     answersEl.textContent = answers[i];
-    if(answers[i] === array.correct){
+    if(answers[i] === array[number].correct){
       answersEl.setAttribute('id', 'correct');
     } else {
       answersEl.setAttribute('class', 'incorrect');
     }
-    bodyEl.appendChild(answersEl);
+    questionDivEl.appendChild(answersEl);
   }
 }
 
