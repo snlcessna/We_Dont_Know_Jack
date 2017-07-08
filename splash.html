@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="styleSplash.css">
   </head>
   <body>
+
     <header>
       <ul class="nav-bar">
         <li class="nav-bar-logo"><img src="assets/jackLogo.png" </li>
@@ -14,15 +15,47 @@
     </header>
 
     <form action='splash.html'>
-      <p>Username:
-        <input type="text" name="username" size="15" maxlength="30" />
-      </p>
-      <p>What type of game:
-    <br />
-    <input type="radio" name="type" value="short" checked="checked" /> Short
-    <input type="radio" name="type" value="long" /> Long
+      <fieldset>
+        <legend>
+          How many are playing?
+        </legend>
+        <label>
+          <p><br>
+          <input type="radio" name="type" value="one" checked="checked" /> One Player
+          <input type="radio" name="type" value="two" /> Two Players
+          <br><br>
+          </p>
+        </label>
+        <p>What is your username?</p><br>
+        <label>
+          <p>
+          Player 1:
+          <input type="text" name="username1" size="15" maxlength="30" />
+        </label>
+        <label for="username2">
+          Player 2:
+          <input type="text" name="username2" size="15" maxlength="30" />
+        </p>
+        </label>
+        <br />
+      </fieldset>
     </form>
 
+    <form action ='splash.html'>
+      <fieldset>
+        <p>Upload your Avatar: <br>
+          <input class='avatar-upload' type="file" name="user-avatar" /><br>
+          <input class='avatar-upload' type="submit" value="Upload" />
+        </p><br>
+        <p>What type of game: <br>
+          <input type="radio" name="type" value="short" checked="checked" /> Short
+          <input type="radio" name="type" value="long" /> Long
+      </fieldset>
+    </form>
+
+
+
     <script src="app.js" type="text/javascript"></script>
+
   </body>
 </html>
