@@ -77,3 +77,68 @@ var codeQuestion3 = new Question('When using an image for a background, how do y
 var codeQuestion4 = new Question('What index is the \"4\" in within the following array?  numbers = [7, 1, 8, monkey, 12, 3, 4]', 6, 3, 8, 7, 'codeCat');
 
 var codeQuestion5 = new Question('How do you round a number to the nearest integer?', 'Math.round()', 'Math.floor()', 'Math.integer()', 'Math.ceil()', 'codeCat');
+
+
+
+
+//render scores to screen -JW
+
+//functions=====================================================================
+
+//current game object constructor - JW
+
+function currentGame(numOfQuestions, player1, player2) {
+  this.numOfQuestions = numOfQuestions;
+  this.catergoriesShown = [];
+  this.categoriesChosen = [];
+  this.questionsShown = [];
+  this.questionsCounter = 0;
+  this.player1Score = 0;
+  this.player2Score = 0;
+  this.player1 = '';
+  this.player2 = '';
+}
+
+//function to write players & scores to scoreboard -JW
+function addToScoreBoard (object){
+  var newTRow = document.createElement('tr');
+  tbody.appendChild(newTRow);
+  var playerData = document.createElement('td');
+  newTRow.appendChild(playerData);
+  console.log(object);
+  playerData.textContent = object.name;
+  var scoreData = document.createElement('td');
+  newTRow.appendChild(scoreData);
+  scoreData.textContent = object.score;
+}
+
+//function to write all score data to page -JW
+function writeScores (array) {
+  array.sort(function(a,b){
+    return b.score - a.score;
+  });
+  console.log(playersAndScores);
+  for (var i = 0; i < array.length; i++) {
+    addToScoreBoard(array[i]);
+  }
+}
+//variables -JW
+
+//Global variables
+var player1 = {
+  name: 'Jessica',
+  score: 100000
+};
+var player2 = {
+  name: 'James',
+  score: 200000
+};
+var player3 = {
+  name: 'Larry',
+  score: 500000
+};
+var playersAndScores = [player1, player3, player2];
+//DOM variables
+var tbody = document.getElementById('tableBody');
+
+writeScores(playersAndScores);

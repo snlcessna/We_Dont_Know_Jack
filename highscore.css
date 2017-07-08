@@ -124,7 +124,7 @@ th {
   font-weight: bolder;
   text-align: left;
   padding: 1%;
-  border-bottom: 1px solid #0026BA;
+  border-bottom: 1px solid transparent;
 	border-top: none;
 	border-right: none;
 	border-left: none;
@@ -140,7 +140,7 @@ td {
   color: #000000;
   text-align: left;
   padding: 1%;
-  border-bottom: 1px solid #0026BA;
+  border-bottom: 1px solid transparent;
 	border-top: none;
 	border-right: none;
 	border-left: none;
