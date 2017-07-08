@@ -124,6 +124,7 @@ form {
 	z-index: 6;
 }
 
+<<<<<<< HEAD
 form p {
 	text-align: center;
 	align-content: center;
@@ -136,4 +137,40 @@ form p {
 legend {
 	text-align: center;
 	padding-top: 5px;
+=======
+#play-area {
+	display: block;
+	width: 100%;
+	height: 500px;
+	margin-top: 50px;
+	border-radius: 10px;
+}
+
+#question-div {
+	display: block;
+	margin: auto;
+	margin-top: 25px;
+	width: 70%;
+	height: 500px;
+	font-size: 28px;
+	font-family: 'Annie Use Your Telescope', cursive;
+	font-weight: bold;
+}
+
+#question {
+	text-align: center;
+	padding: 30px;
+	border-radius: 10px;
+	border: 2px solid black;
+	background-color: white;
+}
+
+.incorrect, #correct {
+	text-align: center;
+	margin-top: 25px;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid black;
+	background-color: white;
+>>>>>>> master
 }

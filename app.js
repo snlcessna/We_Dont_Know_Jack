@@ -36,6 +36,20 @@ function printQuestion(array){
     return 0.5 - Math.random();
   })
 
+  //remove heaher nav bar -JZ (this should move to event that starts game)
+  if(document.getElementById('nav-bar')){
+    var child = document.getElementById('nav-bar');
+    var parent = child.parentNode;
+    parent.removeChild(child);
+  }
+
+  //remove game set up form -JZ (this should move to event that starts game)
+  if(document.getElementById('set-up-form')){
+    var child = document.getElementById('set-up-form');
+    var parent = child.parentNode;
+    parent.removeChild(child);
+  }
+
   //check for previous element and remove -JZ
   if(document.getElementById('question-div')){
     var child = document.getElementById('question-div');
@@ -46,10 +60,11 @@ function printQuestion(array){
   //create question/answer div -JZ
   var questionDivEl = document.createElement('div');
   questionDivEl.setAttribute('id', 'question-div');
-  bodyEl.appendChild(questionDivEl);
+  playEl.appendChild(questionDivEl);
 
   //print question -JZ
   var questionEl = document.createElement('p');
+  questionEl.setAttribute('id', 'question');
   questionEl.textContent = array[number].question;
   questionDivEl.appendChild(questionEl);
 
@@ -68,7 +83,7 @@ function printQuestion(array){
 
 //variables=====================================================================
 //other -JZ
-var bodyEl = document.getElementById('body');
+var playEl = document.getElementById('play-area');
 
 //arrays -JZ
 var allCats = ['codeCat'];
@@ -84,3 +99,68 @@ var codeQuestion3 = new Question('When using an image for a background, how do y
 var codeQuestion4 = new Question('What index is the \"4\" in within the following array?  numbers = [7, 1, 8, monkey, 12, 3, 4]', 6, 3, 8, 7, 'codeCat');
 
 var codeQuestion5 = new Question('How do you round a number to the nearest integer?', 'Math.round()', 'Math.floor()', 'Math.integer()', 'Math.ceil()', 'codeCat');
+
+
+
+
+//render scores to screen -JW
+
+//functions=====================================================================
+
+//current game object constructor - JW
+
+function currentGame(numOfQuestions, player1, player2) {
+  this.numOfQuestions = numOfQuestions;
+  this.catergoriesShown = [];
+  this.categoriesChosen = [];
+  this.questionsShown = [];
+  this.questionsCounter = 0;
+  this.player1Score = 0;
+  this.player2Score = 0;
+  this.player1 = '';
+  this.player2 = '';
+}
+
+//function to write players & scores to scoreboard -JW
+function addToScoreBoard (object){
+  var newTRow = document.createElement('tr');
+  tbody.appendChild(newTRow);
+  var playerData = document.createElement('td');
+  newTRow.appendChild(playerData);
+  console.log(object);
+  playerData.textContent = object.name;
+  var scoreData = document.createElement('td');
+  newTRow.appendChild(scoreData);
+  scoreData.textContent = object.score;
+}
+
+//function to write all score data to page -JW
+function writeScores (array) {
+  array.sort(function(a,b){
+    return b.score - a.score;
+  });
+  console.log(playersAndScores);
+  for (var i = 0; i < array.length; i++) {
+    addToScoreBoard(array[i]);
+  }
+}
+//variables -JW
+
+//Global variables
+var player1 = {
+  name: 'Jessica',
+  score: 100000
+};
+var player2 = {
+  name: 'James',
+  score: 200000
+};
+var player3 = {
+  name: 'Larry',
+  score: 500000
+};
+var playersAndScores = [player1, player3, player2];
+//DOM variables
+var tbody = document.getElementById('tableBody');
+
+writeScores(playersAndScores);
