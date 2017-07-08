@@ -118,3 +118,39 @@ form {
   margin-top:  250px;
 	z-index: 6;
 }
+
+#play-area {
+	display: block;
+	width: 100%;
+	height: 500px;
+	margin-top: 50px;
+	border-radius: 10px;
+}
+
+#question-div {
+	display: block;
+	margin: auto;
+	margin-top: 25px;
+	width: 70%;
+	height: 500px;
+	font-size: 28px;
+	font-family: 'Annie Use Your Telescope', cursive;
+	font-weight: bold;
+}
+
+#question {
+	text-align: center;
+	padding: 30px;
+	border-radius: 10px;
+	border: 2px solid black;
+	background-color: white;
+}
+
+.incorrect, #correct {
+	text-align: center;
+	margin-top: 25px;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid black;
+	background-color: white;
+}

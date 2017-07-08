@@ -36,6 +36,20 @@ function printQuestion(array){
     return 0.5 - Math.random();
   })
 
+  //remove heaher nav bar -JZ (this should move to event that starts game)
+  if(document.getElementById('nav-bar')){
+    var child = document.getElementById('nav-bar');
+    var parent = child.parentNode;
+    parent.removeChild(child);
+  }
+
+  //remove game set up form -JZ (this should move to event that starts game)
+  if(document.getElementById('set-up-form')){
+    var child = document.getElementById('set-up-form');
+    var parent = child.parentNode;
+    parent.removeChild(child);
+  }
+
   //check for previous element and remove -JZ
   if(document.getElementById('question-div')){
     var child = document.getElementById('question-div');
@@ -46,10 +60,11 @@ function printQuestion(array){
   //create question/answer div -JZ
   var questionDivEl = document.createElement('div');
   questionDivEl.setAttribute('id', 'question-div');
-  bodyEl.appendChild(questionDivEl);
+  playEl.appendChild(questionDivEl);
 
   //print question -JZ
   var questionEl = document.createElement('p');
+  questionEl.setAttribute('id', 'question');
   questionEl.textContent = array[number].question;
   questionDivEl.appendChild(questionEl);
 
@@ -68,7 +83,7 @@ function printQuestion(array){
 
 //variables=====================================================================
 //other -JZ
-var bodyEl = document.getElementById('body');
+var playEl = document.getElementById('play-area');
 
 //arrays -JZ
 var allCats = ['codeCat'];
