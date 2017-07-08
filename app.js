@@ -109,16 +109,17 @@ var codeQuestion5 = new Question('How do you round a number to the nearest integ
 
 //current game object constructor - JW
 
-function currentGame(numOfQuestions, player1, player2) {
-  this.numOfQuestions = numOfQuestions;
+function CurrentGame(numPlayers, gamelength, username1, username2) {
+  this.numPlayers = numPlayers;
+  this.gamelength = gamelength;
   this.catergoriesShown = [];
   this.categoriesChosen = [];
   this.questionsShown = [];
   this.questionsCounter = 0;
   this.player1Score = 0;
   this.player2Score = 0;
-  this.player1 = '';
-  this.player2 = '';
+  this.username1 = username1;
+  this.username2 = username2;
 }
 
 //function to write players & scores to scoreboard -JW
@@ -163,4 +164,34 @@ var playersAndScores = [player1, player3, player2];
 //DOM variables
 var tbody = document.getElementById('tableBody');
 
-writeScores(playersAndScores);
+//writeScores(playersAndScores);
+
+//Start game JW, JZ, LC
+var playButton = document.getElementById('setupform');
+playButton.addEventListener('submit', handleStart);
+
+function handleStart(event) {
+  event.preventDefault();
+  var numPlayers = event.target.player.value;
+  var gamelength = event.target.gamelength.value;
+  var username1 = event.target.username1.value;
+  var username2 = event.target.username2.value;
+  var game = new CurrentGame(numPlayers, gamelength, username1, username2);
+  var player1 = new Users(username1);
+  var player2 = new Users(username2);
+
+  console.log(numPlayers);
+  console.log(gamelength);
+  console.log(username1);
+  console.log(username2);
+  console.log(player1);
+  console.log(player2);
+  console.log(game);
+}
+
+function Users(name){
+  this.name = name;
+  this.scores = [];
+  this.highScore = 0;
+
+}
