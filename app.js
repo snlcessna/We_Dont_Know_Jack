@@ -36,6 +36,10 @@ function printQuestion(array){
     return 0.5 - Math.random();
   })
 
+  //create question/answer div -JZ
+  var questionDivEl = document.createElement('div');
+  questionDivEl.setAttribute('id', 'question-div');
+  bodyEl.appendChild(questionDivEl);
 
   //print question -JZ
   var questionEl = document.createElement('p');
