@@ -107,45 +107,20 @@ li img {
   color: #8FD8FC;
 }
 
-
-table {
-  width: 80%;
+.bio {
+  font-family: 'Lakki Reddy', cursive;
   float: left;
   margin-top: 20%;
-  margin-bottom: 10%;
-  margin-left: 10%;
-  margin-right: auto;
+  width: 10%;
+  margin-left: 3.5%;
+  padding: 5%;
+  height: 300px;
+  background-color: #FFFFFF;
+  color: #000000;
+  opacity: .9;
 }
 
-th {
-  font-family: 'Annie Use Your Telescope', cursive;
+h1 {
   font-size: 36px;
-  color: #000000;
-  font-weight: bolder;
-  text-align: left;
-  padding: 1%;
-  border-bottom: 1px solid #0026BA;
-	border-top: none;
-	border-right: none;
-	border-left: none;
-  background-color: #FFFFFF;
-  opacity: .9;
-  vertical-align: middle;
-  width: auto;
-}
-
-td {
-  font-family: 'Annie Use Your Telescope', cursive;
-  font-size: 24px;
-  color: #000000;
-  text-align: left;
-  padding: 1%;
-  border-bottom: 1px solid #0026BA;
-	border-top: none;
-	border-right: none;
-	border-left: none;
-  background-color: #FFFFFF;
-  opacity: .9;
-  vertical-align: middle;
-  width: auto;
+  text-align: center;
 }
