@@ -44,8 +44,8 @@ function printQuestion(array){
   }
 
   //remove game set up form -JZ (this should move to event that starts game)
-  if(document.getElementById('set-up-form')){
-    var child = document.getElementById('set-up-form');
+  if(document.getElementById('setupform')){
+    var child = document.getElementById('setupform');
     var parent = child.parentNode;
     parent.removeChild(child);
   }
@@ -180,13 +180,8 @@ function handleStart(event) {
   var player1 = new Users(username1);
   var player2 = new Users(username2);
 
-  console.log(numPlayers);
-  console.log(gamelength);
-  console.log(username1);
-  console.log(username2);
-  console.log(player1);
-  console.log(player2);
-  console.log(game);
+  printQuestion(codeCat);
+
 }
 
 function Users(name){
