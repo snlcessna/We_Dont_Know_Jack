@@ -17,7 +17,7 @@ Question.prototype.catPush = function(){
   if(this.cat === 'codeCat'){
     codeCat.push(this);
   }
-}
+};
 
 //random number generator -JZ
 function randomNumber(min, max){
@@ -34,7 +34,7 @@ function printQuestion(array){
   console.log(answers);
   answers.sort(function(a,b){
     return 0.5 - Math.random();
-  })
+  });
 
   //remove heaher nav bar -JZ (this should move to event that starts game)
   if(document.getElementById('nav-bar')){
@@ -180,13 +180,19 @@ function handleStart(event) {
   var player1 = new Users(username1);
   var player2 = new Users(username2);
 
-  printQuestion(codeCat);
+  console.log(numPlayers);
+  console.log(gamelength);
+  console.log(username1);
+  console.log(username2);
+  console.log(player1);
+  console.log(player2);
+  console.log(game);
 
+  printQuestion(codeCat);
 }
 
 function Users(name){
   this.name = name;
   this.scores = [];
   this.highScore = 0;
-
 }
