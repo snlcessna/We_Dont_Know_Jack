@@ -124,7 +124,6 @@ form {
 	z-index: 6;
 }
 
-<<<<<<< HEAD
 form p {
 	text-align: center;
 	align-content: center;
@@ -137,7 +136,8 @@ form p {
 legend {
 	text-align: center;
 	padding-top: 5px;
-=======
+}
+
 #play-area {
 	display: block;
 	width: 100%;
@@ -172,5 +172,4 @@ legend {
 	border-radius: 10px;
 	border: 2px solid black;
 	background-color: white;
->>>>>>> master
 }
