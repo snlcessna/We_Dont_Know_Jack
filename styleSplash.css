@@ -119,17 +119,25 @@ form {
   align-items: center;
   width: 50%;
   margin-left: 25%;
-  margin-top:  15%;
+  margin-top:  10%;
 	margin-bottom: 15%;
-}
-
-form p {
-	text-align: center;
-	align-content: center;
 }
 
 .avatar-upload {
 	font-size-adjust: auto;
+	font-family: 'Lakki Reddy', cursive;
+	font-size: 12px;
+	float: left;
+	margin-bottom: 3%;
+	margin-top: 3%;
+	clear: both;
+	background-color: #000000;
+	border: none;
+	color: #FFFFFF;
+	padding-top: 2%;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 1%;
 }
 
 legend, h1 {
@@ -153,10 +161,13 @@ label {
 }
 
 .center {
-	margin-left: 25%;
+	margin-left: 20%;
+	margin-bottom: 3%;
+	width: 100%;
+	float: left;
 }
 
-#category {
+#category, #questions {
 	display: none;
 }
 
@@ -164,6 +175,14 @@ label {
 	float: left;
 	clear: left;
 	margin-left: 8%;
+}
+
+input[type=text] {
+	font-family: 'Annie Use Your Telescope', cursive;
+	font-size: 16px;
+	border: none;
+	background-color: #000000;
+	color: #FFFFFF;
 }
 
 input.check {
@@ -187,7 +206,7 @@ input.check:checked {
 	color: #FFFFFF;
 }
 
-#play, #submitCategory {
+#play, #submitCategory, #submitQuestion {
 	font-family: 'Lakki Reddy', cursive;
 	font-size: 18px;
 	float: left;

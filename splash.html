@@ -21,9 +21,9 @@
         </legend>
         <h2>How many are playing?</h2>
         <div class="center">
-          <input type="radio" name="player" value="one" checked="checked" />
+          <input class="check" type="radio" name="player" value="one" checked="checked" />
           <label for="player">One Player</label>
-          <input type="radio" name="player" value="two" />
+          <input class="check" type="radio" name="player" value="two" />
           <label for="player">Two Players</label>
         </div>
         <h2>What is your username?</h2>
@@ -38,13 +38,13 @@
         <h2>Upload your Avatar: </h2>
         <div class="center">
           <input class='avatar-upload' type="file" name="user-avatar" /><br>
-          <input class='avatar-upload' type="submit" value="Upload" />
+          <input id="uploadButton" class='avatar-upload' type="submit" value="Upload" />
         </div>
         <h2>What type of game: <h2>
         <div class="center">
-          <input id='short' type="radio" name="gamelength" value="short" checked="checked" />
+          <input id='short' class="check" type="radio" name="gamelength" value="short" checked="checked" />
           <label for="gamelength">Short</label>
-          <input id='long' type="radio" name="gamelength" value="long" />
+          <input id='long' class="check" type="radio" name="gamelength" value="long" />
           <label for="gamelength">Long</label>
         </div>
       </fieldset>
@@ -69,6 +69,26 @@
         <label for="catOptionFour" id='catOptionFour'></label>
       </div>
       <input id="submitCategory" type="submit" name="submitCategory" value="Let's Play!" />
+    </form>
+    <form id="questions">
+      <h1 id="quizQuestion"></h1>
+      <div class="questionSection">
+        <input id="questionOption1" class="check" type="radio" name="questionOption" value="" />
+        <label for="questionOptionOne" id='questionOptionOne'></label>
+      </div>
+      <div class="questionSection">
+        <input id="questionOption2" class="check" type="radio" name="questionOption" value="" />
+        <label for="questionOptionTwo" id='questionOptionTwo'></label>
+      </div>
+      <div class="questionSection">
+        <input id="questionOption3" class="check" type="radio" name="questionOption" value="" />
+        <label for="questionOptionThree" id='questionOptionThree'></label>
+      </div>
+      <div class="questionSection">
+        <input id="questionOption4" class="check"  type="radio" name="questionOption" value="" />
+        <label for="questionOptionFour" id='questionOptionFour'></label>
+      </div>
+      <input id="submitQuestion" type="submit" name="submitQuestion" value="I'm Positive" />
     </form>
     <div id="play-area">
     </div>
