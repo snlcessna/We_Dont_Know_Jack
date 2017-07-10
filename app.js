@@ -44,8 +44,8 @@ function printQuestion(array){
   }
 
   //remove game set up form -JZ (this should move to event that starts game)
-  if(document.getElementById('setupform')){
-    var child = document.getElementById('setupform');
+  if(document.getElementById('category')){
+    var child = document.getElementById('category');
     var parent = child.parentNode;
     parent.removeChild(child);
   }
@@ -86,11 +86,16 @@ function printQuestion(array){
 var playEl = document.getElementById('play-area');
 
 //arrays -JZ
-var allCats = ['codeCat'];
+var allCats = ['codeCat', 'cat2', 'cat2', 'cat4', 'cat 5', 'cat6', 'cat7'];
 var codeCat = [];
+var cat2 = [];
+var cat3 = [];
+var cat4 = [];
+var cats = [codeCat, cat2, cat2, cat4];
+
 
 //questions -JZ
-var codeQeustion1 = new Question('What are the CSS values for the display property?', 'Inline, Block, Inline-block, None', 'Inline, Block, Hidden, Visible', 'Visible, Invisible, Inline, Block', 'Block, Inline, Inline-block, Hidden', 'codeCat');
+var codeQuestion1 = new Question('What are the CSS values for the display property?', 'Inline, Block, Inline-block, None', 'Inline, Block, Hidden, Visible', 'Visible, Invisible, Inline, Block', 'Block, Inline, Inline-block, Hidden', 'codeCat');
 
 var codeQuestion2 = new Question('What bullet point styles can you use for unordered lists?', 'None, Disc, Circle, Square', 'Circle, Star, Dot, Square', 'Decimal, Dot, None, Star', 'Oval, Circle, Square, Star', 'codeCat');
 
@@ -100,6 +105,17 @@ var codeQuestion4 = new Question('What index is the \"4\" in within the followin
 
 var codeQuestion5 = new Question('How do you round a number to the nearest integer?', 'Math.round()', 'Math.floor()', 'Math.integer()', 'Math.ceil()', 'codeCat');
 
+//questions -JW
+
+var codeQuestion6 = new Question('In Javascript, what is the result of: 1 - - 1;', '2', '11', 'undefined', 'codeCat');
+
+var codeQuestion7 = new Question('In Javascript, what is the result of: var foo = \'foo\';   foo.split(\'\');', '[\"f\", \"o\", \"o\"]', 'f,o,o', 'undefined', 'TypeError', 'codeCat');
+
+var codeQuestion8 = new Question('What does CSS stand for?', 'Cascading Style Sheets', 'Computer Styling System', 'Code System Sheet', 'Colors Styles Sizes', 'codeCat');
+
+var codeQuestion9 = new Question ('Which of the following is not true of Javascript?', 'It\'s a compiled language', 'Is an implementation of the ECMAScript Specification', 'Is Object Oriented', 'Is dynamically typed', 'codeCat');
+
+var codeQuestion10 = new Question('In Javascript, hoising affects which of the following?', 'Variable declarations', 'Variable initializations', 'All lines of code', 'None of the Above', 'codeCat');
 
 
 
@@ -122,32 +138,39 @@ function CurrentGame(numPlayers, gamelength, username1, username2) {
   this.username2 = username2;
 }
 
-//function to write players & scores to scoreboard -JW
+//function to create scoreboard template, takes an object -JW
 function addToScoreBoard (object){
   var newTRow = document.createElement('tr');
   tbody.appendChild(newTRow);
   var playerData = document.createElement('td');
   newTRow.appendChild(playerData);
-  console.log(object);
   playerData.textContent = object.name;
   var scoreData = document.createElement('td');
   newTRow.appendChild(scoreData);
   scoreData.textContent = object.score;
 }
 
-//function to write all score data to page -JW
-function writeScores (array) {
+//function to sort scores, takes an array of objects -JW
+function sortScores (array) {
   array.sort(function(a,b){
     return b.score - a.score;
   });
-  console.log(playersAndScores);
-  for (var i = 0; i < array.length; i++) {
-    addToScoreBoard(array[i]);
+}
+
+//function to print all score data to page, takes an array of objects
+function writeScoresToPage(array) {
+  if (document.getElementById('tableBody')){
+    sortScores(array);
+    for (var i = 0; i < array.length; i++) {
+      addToScoreBoard(array[i]);
+    }
   }
 }
 //variables -JW
-
+//DOM variables
+var tbody = document.getElementById('tableBody');
 //Global variables
+//test code
 var player1 = {
   name: 'Jessica',
   score: 100000
@@ -161,10 +184,11 @@ var player3 = {
   score: 500000
 };
 var playersAndScores = [player1, player3, player2];
-//DOM variables
-var tbody = document.getElementById('tableBody');
+writeScoresToPage(playersAndScores);
+//end of test code
 
-//writeScores(playersAndScores);
+
+
 
 //Start game JW, JZ, LC
 var playButton = document.getElementById('setupform');
@@ -188,11 +212,78 @@ function handleStart(event) {
   console.log(player2);
   console.log(game);
 
-  printQuestion(codeCat);
+  displayCategories();
 }
 
 function Users(name){
   this.name = name;
   this.scores = [];
   this.highScore = 0;
+}
+
+//Display Category Options -JW
+
+function displayCategories() {
+  //check for set up form and remove
+  if(document.getElementById('setupform')){
+    var child = document.getElementById('setupform');
+    var parent = child.parentNode;
+    parent.removeChild(child);
+  }
+
+  //check for previous question element and remove -JZ
+  if(document.getElementById('question-div')){
+    var child = document.getElementById('question-div');
+    var parent = child.parentNode;
+    parent.removeChild(child);
+  }
+
+  //choose 4 ramdom categories to display
+  var displayCats = [];
+  for (var i = 0; i < 4; i++) {
+    var num = randomNumber(0, allCats.length - 1);
+    while (displayCats.indexOf(num) !== -1){
+      num = randomNumber(0, allCats.length - 1);
+    }
+    displayCats.push(num);
+    console.log(displayCats);
+  }
+  //wirte categories to form and set value attribute on radio buttons
+  var catOptionOne = document.getElementById('catOptionOne');
+  catOptionOne.textContent = allCats[displayCats[0]];
+  var optionOne = document.getElementById('option1');
+  optionOne.setAttribute('value', allCats[displayCats[0]]);
+
+  var catOptionTwo = document.getElementById('catOptionTwo');
+  catOptionTwo.textContent = allCats[displayCats[1]];
+  var optionTwo = document.getElementById('option2');
+  optionTwo.setAttribute('value', allCats[displayCats[1]]);
+
+  var catOptionThree = document.getElementById('catOptionThree');
+  catOptionThree.textContent = allCats[displayCats[2]];
+  var optionThree = document.getElementById('option3');
+  optionThree.setAttribute('value', allCats[displayCats[2]]);
+
+  var catOptionFour = document.getElementById('catOptionFour');
+  catOptionFour.textContent = allCats[displayCats[3]];
+  var optionFour = document.getElementById('option4');
+  optionFour.setAttribute('value', allCats[displayCats[3]]);
+
+  //display category form
+  var category = document.getElementById('category');
+  category.style.display = 'initial';
+};
+
+//Record Current Category and load questions
+var categoryButton = document.getElementById('category');
+categoryButton.addEventListener('submit', startQuestions);
+
+function startQuestions(event) {
+  event.preventDefault();
+  var catChosen = event.target.catOption.value;
+  console.log(catChosen);
+  var catIndex = allCats.indexOf(catChosen);
+  console.log(catIndex);
+  console.log(cats[catIndex]);
+  printQuestion(cats[catIndex]);
 }

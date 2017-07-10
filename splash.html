@@ -3,55 +3,74 @@
   <head>
     <title>We Don't Know Jack</title>
     <link rel="stylesheet" type="text/css" href="styleSplash.css">
+    <link href="assets/jackFavicon.png" rel="icon" type="image/png" />
   </head>
   <body id="body">
     <header>
       <ul class="nav-bar" id="nav-bar">
         <li class="nav-bar-logo"><img src="assets/jackLogo.png" </li>
-        <li class="nav-list-item"><a class="nav-item-link" href="index.html">Play Jack!</a></li>
+        <li class="nav-list-item"><a class="nav-item-link" href="highscore.html">Score Board</a></li>
         <li class="nav-list-item"><a class="nav-item-link" href="aboutus.html">About Us</a></li>
       </ul>
     </header>
-
-    <form action='splash.html' id="setupform">// Form to accept user data - LC
+    <!--// Form to accept user data - LC-->
+    <form action='splash.html' id="setupform">
       <fieldset>
         <legend>
-          How many are playing?
+          Let's Get Started!
         </legend>
-        <label>
-          <p><br>
-          <input type="radio" name="player" value="one" checked="checked" /> One Player
-          <input type="radio" name="player" value="two" /> Two Players
-          <br><br>
-          </p>
-        </label>
-        <p>What is your username?</p><br>
-        <label>
-          <p>
-          Player 1:
+        <h2>How many are playing?</h2>
+        <div class="center">
+          <input type="radio" name="player" value="one" checked="checked" />
+          <label for="player">One Player</label>
+          <input type="radio" name="player" value="two" />
+          <label for="player">Two Players</label>
+        </div>
+        <h2>What is your username?</h2>
+        <div class="center">
+          <label for="username1">Player 1:</label>
           <input type="text" name="username1" size="15" maxlength="30" />
-        </label>
-        <label for="username2">
-          Player 2:
+          <label for="username2">Player 2:</label>
           <input type="text" name="username2" size="15" maxlength="30" />
-        </p>
-        </label>
-        <br />
+        </div>
       </fieldset>
       <fieldset>
-        <p>Upload your Avatar: <br>
+        <h2>Upload your Avatar: </h2>
+        <div class="center">
           <input class='avatar-upload' type="file" name="user-avatar" /><br>
           <input class='avatar-upload' type="submit" value="Upload" />
-        </p><br>
-        <p>What type of game: <br>
-          <input id='short' type="radio" name="gamelength" value="short" checked="checked" /> Short
-          <input id='long' type="radio" name="gamelength" value="long" /> Long
+        </div>
+        <h2>What type of game: <h2>
+        <div class="center">
+          <input id='short' type="radio" name="gamelength" value="short" checked="checked" />
+          <label for="gamelength">Short</label>
+          <input id='long' type="radio" name="gamelength" value="long" />
+          <label for="gamelength">Long</label>
+        </div>
       </fieldset>
-      <input id='play' type="submit" name="start" value="Play Now" />
+        <input id='play' type="submit" name="start" value="Play Now" />
     </form>
-    
-    <div id='play-area'>
-
+    <form id="category">
+      <h1>Choose Your Category:</h1>
+      <div class="catSection">
+        <input id="option1" class="check" type="radio" name="catOption" value="checked" />
+        <label for="catOptionOne" id='catOptionOne'></label>
+      </div>
+      <div class="catSection">
+        <input id="option2" class="check" type="radio" name="catOption" value="" />
+        <label for="catOptionTwo" id='catOptionTwo'></label>
+      </div>
+      <div class="catSection">
+        <input id="option3" class="check" type="radio" name="catOption" value="" />
+        <label for="catOptionThree" id='catOptionThree'></label>
+      </div>
+      <div class="catSection">
+        <input id="option4" class="check"  type="radio" name="catOption" value="" />
+        <label for="catOptionFour" id='catOptionFour'></label>
+      </div>
+      <input id="submitCategory" type="submit" name="submitCategory" value="Let's Play!" />
+    </form>
+    <div id="play-area">
     </div>
     <script src="app.js" type="text/javascript"></script>
 

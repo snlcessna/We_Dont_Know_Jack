@@ -54,6 +54,7 @@ table {
 body {
   background-image: url('./assets/questionMark.jpg');
   background-size: cover;
+	background-repeat: no-repeat;
 }
 
 
@@ -64,7 +65,7 @@ header {
   position: fixed;
   opacity: .8;
   margin-left: -10px;
-  margin-top:  -10px;
+  margin-top:  -50px;
 	z-index: 3;
 }
 
@@ -79,7 +80,7 @@ header {
 
 .nav-bar-logo {
   float: left;
-  margin-right: 35%;
+  margin-right: 30%;
   margin-left: 3%;
   padding-top: 3%;
   padding-bottom: 2%;
@@ -112,16 +113,14 @@ form {
   font-size: 40px;
   color: #000000;
   text-align: left;
-  position: static;
-  opacity: .8;
+  background-color: rgba(255, 255, 255, .9);
 	float: left;
 	padding: 0px 0px 0px 0px;
   align-items: center;
   width: 50%;
-  background-color: #FFFFFF;
   margin-left: 25%;
   margin-top:  15%;
-	z-index: 6;
+	margin-bottom: 15%;
 }
 
 form p {
@@ -133,9 +132,77 @@ form p {
 	font-size-adjust: auto;
 }
 
-legend {
+legend, h1 {
+	font-family: 'Lakki Reddy', cursive;
 	text-align: center;
-	padding-top: 5px;
+	padding-top: 5%;
+}
+
+h2 {
+	font-family: 'Lakki Reddy', cursive;
+	font-size: 24px;
+	padding-left: 5%;
+	padding-top: 5%;
+}
+
+
+label {
+	font-family: 'Annie Use Your Telescope', cursive;
+	font-size: 18px;
+	text-align: center;
+}
+
+.center {
+	margin-left: 25%;
+}
+
+#category {
+	display: none;
+}
+
+.catSection {
+	float: left;
+	clear: left;
+	margin-left: 8%;
+}
+
+input.check {
+	-webkit-appearance:none;
+	border: 2px solid #000000;
+	background-color: #000000;
+	color: #000000;
+  margin-left: 20px;
+	width: 20px;
+	height: 20px;
+}
+
+input.check::before {
+	content: "\2713";
+	padding-left: 2px;
+
+}
+
+input.check:checked {
+  border: 2px solid #000000;
+	color: #FFFFFF;
+}
+
+#play, #submitCategory {
+	font-family: 'Lakki Reddy', cursive;
+	font-size: 18px;
+	float: left;
+	margin-left: 35%;
+	margin-bottom: 3%;
+	margin-top: 3%;
+	clear: both;
+	background-color: #000000;
+	border: none;
+	color: #FFFFFF;
+	padding-top: 2%;
+	padding-left: 7%;
+	padding-right: 7%;
+	padding-bottom: 1%;
+
 }
 
 #play-area {
