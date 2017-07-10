@@ -259,3 +259,14 @@ input.check:checked {
 	border: 2px solid black;
 	background-color: white;
 }
+
+#finalScores {
+	float: left;
+	background-color: #FFFFFF;
+	color: #000000;
+	opacity: .9;
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 20%;
+	display: none;
+}

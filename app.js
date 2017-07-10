@@ -291,6 +291,11 @@ function startQuestions(event) {
   var catIndex = allCats.indexOf(catChosen);
   console.log(catIndex);
   console.log(cats[catIndex]);
+  //clear checked radio buttons
+  var checked = document.getElementsByName("catOption");
+  for(var i = 0; i < checked.length; i++) {
+     checked[i].checked = false;
+   };
   displayQuestions(cats[catIndex]);
 }
 
@@ -325,20 +330,20 @@ function displayQuestions(array) {
   answers.sort(function(a,b){
     return 0.5 - Math.random();
   });
-
+  console.log(answers);
   //print question -JZ
   var questionEl = document.getElementById('quizQuestion');
   questionEl.textContent = array[number].question;
 
 //function to set value attribut to correct or incorrect
-function setResponseValue (object, element) {
-  console.log(object);
-    if(object.correct){
+  function setResponseValue (object, element) {
+    if(array[number].correct === object){
         element.setAttribute('value', 'correct');
       } else {
         element.setAttribute('value', 'incorrect');
       }
-    }
+  }
+
   //wirte Questions to form and set value attribute on radio buttons
   var questionOptionOne = document.getElementById('questionOptionOne');
   questionOptionOne.textContent = answers[0];
@@ -378,10 +383,79 @@ function answerQuestion(event) {
     game.player1Score += 1000;
     console.log(game.player1Score);
   }
-  displayCategories();
+  game.questionsCounter++;
+  console.log(game.questionsCounter);
+
+  var checked = document.getElementsByName("questionOption");
+  for(var i = 0; i < checked.length; i++) {
+     checked[i].checked = false;
+   };
+
+  checkGameLength();
+}
+
+function checkGameLength(){
+  if (game.gamelength === 'short' && game.questionsCounter === 5){
+    //remove page elements
+    var setUpform = document.getElementById('setupform');
+    if(setUpform){
+      setUpform.style.display = 'none';
+    }
+
+    //check for category questions and remove -JZ
+    var category = document.getElementById('category');
+    if(category){
+      category.style.display = 'none';
+    }
+
+    //check for previous question element and remove -JZ
+    var questions = document.getElementById('questions');
+    if(questions){
+      questions.style.display = 'none';
+    }
+    //display final scores
+    var player1FinalScore = document.getElementById('player1FinalScore');
+    player1FinalScore.textContent = game.player1Score;
+    var scoresDiv = document.getElementById('finalScores');
+    scoresDiv.style.display = 'initial';
+  }
+  else if (game.gamelength === 'long' && game.questionsCounter === 11){
+
+    //remove page elements
+    var setUpform = document.getElementById('setupform');
+    if(setUpform){
+      setUpform.style.display = 'none';
+    }
+
+    //check for category questions and remove -JZ
+    var category = document.getElementById('category');
+    if(category){
+      category.style.display = 'none';
+    }
+
+    //check for previous question element and remove -JZ
+    var questions = document.getElementById('questions');
+    if(questions){
+      questions.style.display = 'none';
+    }
+
+    //display final scores
+    var scoresDiv = document.getElementById('finalScores');
+    var player1FinalScore = document.getElementById('player1FinalScore');
+    player1FinalScore.textContent = game.player1Score;
+    scoresDiv.style.display = 'initial';
+  }
+  else {
+    displayCategories();
+  }
 }
 
 function saveObjectsToLocalStorage(object){
   var dataString = JSON.stringify(object);
   localStorage.object = dataString;
+};
+
+//Display player data
+function displayPlayerInfo(user){
+
 };
