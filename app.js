@@ -107,7 +107,7 @@ var codeQuestion5 = new Question('How do you round a number to the nearest integ
 
 //questions -JW
 
-var codeQuestion6 = new Question('In Javascript, what is the result of: 1 - - 1;', '2', '11', 'undefined', 'codeCat');
+var codeQuestion6 = new Question('In CSS, which of the following is not a pseudo class?', ':none', ':hover', ':visited', ':default', 'codeCat');
 
 var codeQuestion7 = new Question('In Javascript, what is the result of: var foo = \'foo\';   foo.split(\'\');', '[\"f\", \"o\", \"o\"]', 'f,o,o', 'undefined', 'TypeError', 'codeCat');
 
@@ -139,15 +139,15 @@ function CurrentGame(numPlayers, gamelength, username1, username2) {
 }
 
 //function to create scoreboard template, takes an object -JW
-function addToScoreBoard (object){
+function addToScoreBoard (playerObject){
   var newTRow = document.createElement('tr');
   tbody.appendChild(newTRow);
   var playerData = document.createElement('td');
   newTRow.appendChild(playerData);
-  playerData.textContent = object.name;
+  playerData.textContent = playerObject.name;
   var scoreData = document.createElement('td');
   newTRow.appendChild(scoreData);
-  scoreData.textContent = object.score;
+  scoreData.textContent = playerObject.currentScore;
 }
 
 //function to sort scores, takes an array of objects -JW
@@ -170,25 +170,12 @@ function writeScoresToPage(array) {
 //DOM variables
 var tbody = document.getElementById('tableBody');
 //Global variables
-
-var game;
+var players = [];
 var player1;
 var player2;
-//test code
-var player1 = {
-  name: 'Jessica',
-  score: 100000
-};
-var player2 = {
-  name: 'James',
-  score: 200000
-};
-var player3 = {
-  name: 'Larry',
-  score: 500000
-};
-var playersAndScores = [player1, player3, player2];
-writeScoresToPage(playersAndScores);
+var game;
+
+writeScoresToPage(game);
 //end of test code
 
 
@@ -225,6 +212,7 @@ function handleStart(event) {
 
 function Users(name){
   this.name = name;
+  this.currentScore = 0;
   this.scores = [];
   this.highScore = 0;
 }
@@ -380,8 +368,8 @@ function answerQuestion(event) {
   var answerChosen = event.target.questionOption.value;
   console.log(answerChosen);
   if (answerChosen === 'correct'){
-    game.player1Score += 1000;
-    console.log(game.player1Score);
+    player1.currentScore += 1000;
+    console.log(player1.currentScore);
   }
   game.questionsCounter++;
   console.log(game.questionsCounter);
@@ -415,9 +403,10 @@ function checkGameLength(){
     }
     //display final scores
     var player1FinalScore = document.getElementById('player1FinalScore');
-    player1FinalScore.textContent = game.player1Score;
+    player1FinalScore.textContent = player1.currentScore;;
     var scoresDiv = document.getElementById('finalScores');
     scoresDiv.style.display = 'initial';
+    players.push(player1);
   }
   else if (game.gamelength === 'long' && game.questionsCounter === 11){
 
@@ -442,8 +431,11 @@ function checkGameLength(){
     //display final scores
     var scoresDiv = document.getElementById('finalScores');
     var player1FinalScore = document.getElementById('player1FinalScore');
-    player1FinalScore.textContent = game.player1Score;
+    console.log(player1.currentScore);
+    player1FinalScore.textContent = player1.currentScore;
     scoresDiv.style.display = 'initial';
+    players.push(player1);
+
   }
   else {
     displayCategories();

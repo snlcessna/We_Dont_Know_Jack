@@ -53,7 +53,6 @@ table {
 
 body {
   background-image: url('./assets/questionMark.jpg');
-  background-size: cover;
 	background-repeat: no-repeat;
 }
 
@@ -63,9 +62,9 @@ header {
   width: 105%;
   background-color: #FFFFFF;
   position: fixed;
-  opacity: .8;
+  opacity: .9;
   margin-left: -10px;
-  margin-top:  -50px;
+  margin-top:  -10px;
 	z-index: 3;
 }
 
@@ -268,5 +267,6 @@ input.check:checked {
 	width: 50%;
 	margin-left: 25%;
 	margin-top: 20%;
+	margin-bottom: 50%;
 	display: none;
 }
