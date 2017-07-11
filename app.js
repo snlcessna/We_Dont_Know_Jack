@@ -18,8 +18,9 @@ Question.prototype.catPush = function(){
     codeCat.push(this);
   } else if (this.cat === 'food') {
     food.push(this);
-  }else if (this.cat === 'literature') {
+  } else if (this.cat === 'literature') {
     literature.push(this);
+  }
 };
 
 //random number generator -JZ
@@ -473,8 +474,7 @@ function checkGameLength(){
     players.push(player1);
     highScores.push(player1);
     setHighScore();
-  }
-  else if (game.gamelength === 'long' && game.questionsCounter === 11){
+  } else if (game.gamelength === 'long' && game.questionsCounter === 11){
 
     //remove page elements
     var setUpform = document.getElementById('setupform');
@@ -503,8 +503,7 @@ function checkGameLength(){
     players.push(player1);
     highScores.push(player1);
     setHighScore();
-  }
-  else {
+  } else {
     displayCategories();
   }
 }
@@ -513,18 +512,20 @@ function setHighScore() {
   highScores.sort(function (a,b) {
     var x = a.currentScore;
     var y = b.currentScore;
-  return ((x <y) ? 1 : (x > y) ? -1 : 0);
-});
-if (highScores.length>5) {
-  highScores.splice(5, (highScores.length-5));
+    return ((x < y) ? 1 : (x > y) ? -1 : 0);
+  });
+
+  if (highScores.length > 5) {
+    highScores.splice(5, (highScores.length - 5));
   }
+
   saveHighScore(highScores);
-}
+};
 
 function saveHighScore(object) {
   var dataString = JSON.stringify(object);
   localStorage.curentHighScore = dataString;
-}
+};
 
 function saveObjectsToLocalStorage(object){
   var dataString = JSON.stringify(object);
