@@ -361,6 +361,21 @@ function displayQuestions(array) {
   //generate number -JZ
   var number = randomNumber(0, (array.length - 1));
 
+//generate a new random number
+//check to see if in our questionsShown array
+//if so, generate a new random number
+//if not, push random number to questionsShown array - ML
+  function randomQuestion() {
+    while (game.questionsShown.includes(number)) {
+      number = randomNumber(0, (array.length - 1));
+  }
+      game.questionsShown.push(number);
+  }
+
+  randomQuestion();
+
+
+
   //randomize position of answers -JZ
   var answers = [array[number].correct, array[number].incorrect1, array[number].incorrect2, array[number].incorrect3];
   console.log(answers);
