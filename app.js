@@ -175,7 +175,7 @@ var player1;
 var player2;
 var game;
 
-writeScoresToPage(game);
+//writeScoresToPage(game);
 //end of test code
 
 
@@ -407,6 +407,7 @@ function checkGameLength(){
     var scoresDiv = document.getElementById('finalScores');
     scoresDiv.style.display = 'initial';
     players.push(player1);
+    setHighScore();
   }
   else if (game.gamelength === 'long' && game.questionsCounter === 11){
 
@@ -439,6 +440,12 @@ function checkGameLength(){
   }
   else {
     displayCategories();
+  }
+}
+
+function setHighScore(player) {
+  if (player.currentScore > player.highScore) {
+    player.highScore=player.currentScore;
   }
 }
 
