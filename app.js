@@ -16,7 +16,10 @@ function Question(question, correct, incorrect1, incorrect2, incorrect3, cat){
 Question.prototype.catPush = function(){
   if(this.cat === 'codeCat'){
     codeCat.push(this);
-  }
+  } else if (this.cat === 'food') {
+    food.push(this);
+  }else if (this.cat === 'literature') {
+    literature.push(this);
 };
 
 //random number generator -JZ
@@ -86,12 +89,12 @@ function printQuestion(array){
 var playEl = document.getElementById('play-area');
 
 //arrays -JZ
-var allCats = ['The All-Encompasing World of Code', 'cat2', 'cat2', 'cat4'];
+var allCats = ['The All-Encompasing World of Code', 'Global Cuisine', 'Literature and Philosophy', 'cat4'];
 var codeCat = [];
-var cat2 = [];
-var cat3 = [];
+var food = [];
+var literature = [];
 var cat4 = [];
-var cats = [codeCat, cat2, cat2, cat4];
+var cats = [codeCat, food, literature, cat4];
 
 
 //questions -JZ
@@ -117,6 +120,49 @@ var codeQuestion9 = new Question ('Javascript is not:', 'A compiled language', '
 
 var codeQuestion10 = new Question('In Javascript, hoisting affects which of the following?', 'Variable declarations', 'Variable initializations', 'All lines of code', 'None of the Options Listed', 'codeCat');
 
+//Food Trivia questions
+
+var foodQuestion1 = new Question ('What is the name for a confection that consists primarily of sugar or honey and almond meal?', 'Marzipan', 'Brittle', 'Shortbread', 'Pate a Choux', 'food');
+
+var foodQuestion2 = new Question ('Roquefort is a French blue cheese made from the milk of what animal?', 'Sheep', 'Goat', 'Cow', 'Pig', 'food');
+
+var foodQuestion3 = new Question ('What fast-food franchise has the most worldwide locations?', 'Subway', 'McDonald\'s', 'BurgerKing', 'KFC', 'food');
+
+var foodQuestion4 = new Question ('Dijon mustand originated in the city of Dijon, located in what country?', 'France', 'Switzerland', 'Germany', 'United Kingdom', 'food');
+
+var foodQuestion5 = new Question('What popular soda beverage was originally developed as a mixer for whiskey?', 'Mountain Dew', 'Coca Cola', 'Pepsi', '7 Up', 'food');
+
+var foodQuestion6 = new Question ('What was the original flavor of the filling in Twinkies?', 'Banana Cream', 'Vanilla', 'Cream Cheese', 'White Chocolate', 'food');
+
+var foodQuestion7 = new Question ('What is name of the scale used to measure the spicy heat of peppers?', 'Scoville scale', 'Manhattan Rating', 'Heat Index', 'Burn Level', 'food');
+
+var foodQuestion8 = new Question ('A tandoor is a type of what?', 'Oven', 'Pot', 'Seasoning', 'Cuisine', 'food');
+
+var foodQuestion9 = new Question ('In what year was the blue M&M first introduced?', '1995', '2000', '1992', '1987', 'food');
+
+var foodQuestion10 = new Question ('How many items are in a Baker\'s Dozen?', '13', '12', '16', '9', 'food');
+
+//Literature questions
+
+var litQuestion1 = new Question ('War and Peace, originally published in 1869, is a novel written by which Russian author?', 'Leo Tolstoy', 'Vladimir Nabokov', 'Franz Kafka', 'Mikhail Bulgakov', 'literature');
+
+var litQuestion2 = new Question ('In the children\'s books about a 25 foot tall red dog, what is the name of the dog?', 'Clifford', 'Rover', 'Spike', 'Rex', 'literature');
+
+var litQuestion3 = new Question ('Being and Time is an ontological treatise written by which German philosopher?', 'Martin Heidegger', 'Wilfred Sellars', 'Walter Benjamin', 'Ludwig Wittgenstein', 'literature');
+
+var litQuestion4 = new Question ('Which Irish author wrote the avant-garde comic fiction,Finnegans Wake?', 'James Joyce', 'Oscar Wilde', 'Brian O\'Nolan', 'W.B. Yeats', 'literature');
+
+var litQuestion5 = new Question ('What musical instrument did Sherlock Holmes play?', 'Violin', 'Piano', 'Cello', 'French Horn', 'literature');
+
+var litQuestion6 = new Question ('Cogito ergo sum, "I think, therefore I am", is a Latin phrase by which philospher?', 'Rene Descartes', 'Voltaire', 'Michel Foucault', 'Albert Camus', 'Jean-Paul Sartre', 'literature');
+
+var litQuestion7 = new Question ('Who is the author of the book A Brief History of Time?', 'Stephen Hawking', 'Albert Einstein', 'Nikola Tesla', 'Isaac Newton', 'literature');
+
+var litQuestion8 = new Question ('The Artful Dodger is a character from which novel?', 'Oliver Twist', 'East of Eden', 'The Pickwick Papers', 'Dubliners', 'literature');
+
+var litQuestion9 = new Question ('Jules Verne\'s fictional submarine the Nautilus is captained by which character?', 'Captain Nemo', 'Captian Jack Sparrow', 'Captain Ahab', 'Captain Smollett', 'literature');
+
+var litQuestion10 = new Question ('The Communist Manifesto was written by which two German philosophers?', 'Karl Marx and Friedrich Engels', 'Friedrich Nietzsche and Karl Marx', 'Immanuel Kant and Arthur_Schopenhauer', 'Theodor Adorno and Friedrich Nietzsche', 'literature');
 
 
 //render scores to screen -JW
