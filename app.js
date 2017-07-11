@@ -315,14 +315,14 @@ function displayQuestions(array) {
 //generate a new random number
 //check to see if in our questionsShown array
 //if so, generate a new random number
-//if not, push random number to questionsShown arry
+//if not, push random number to questionsShown array - ML
   function randomQuestion() {
     while (game.questionsShown.includes(number)) {
       number = randomNumber(0, (array.length - 1));
   }
       game.questionsShown.push(number);
   }
-  
+
   randomQuestion();
 
 
