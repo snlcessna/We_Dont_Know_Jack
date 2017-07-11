@@ -93,6 +93,9 @@ var cat3 = [];
 var cat4 = [];
 var cats = [codeCat, cat2, cat2, cat4];
 
+//player objects -JZ and LBC
+var highScores = [];
+
 
 //questions -JZ
 var codeQuestion1 = new Question('What are the CSS values for the display property?', 'Inline, Block, Inline-block, None', 'Inline, Block, Hidden, Visible', 'Visible, Invisible, Inline, Block', 'Block, Inline, Inline-block, Hidden', 'codeCat');
@@ -175,7 +178,7 @@ var player1;
 var player2;
 var game;
 
-writeScoresToPage(game);
+//writeScoresToPage(game);
 //end of test code
 
 
@@ -403,10 +406,12 @@ function checkGameLength(){
     }
     //display final scores
     var player1FinalScore = document.getElementById('player1FinalScore');
-    player1FinalScore.textContent = player1.currentScore;;
+    player1FinalScore.textContent = player1.currentScore;
     var scoresDiv = document.getElementById('finalScores');
     scoresDiv.style.display = 'initial';
     players.push(player1);
+    highScores.push(player1);
+    setHighScore();
   }
   else if (game.gamelength === 'long' && game.questionsCounter === 11){
 
@@ -435,11 +440,29 @@ function checkGameLength(){
     player1FinalScore.textContent = player1.currentScore;
     scoresDiv.style.display = 'initial';
     players.push(player1);
-
+    highScores.push(player1);
+    setHighScore();
   }
   else {
     displayCategories();
   }
+}
+//Persist highscore to localStorage = LC JZ
+function setHighScore() {
+  highScores.sort(function (a,b) {
+    var x = a.currentScore;
+    var y = b.currentScore;
+  return ((x <y) ? 1 : (x > y) ? -1 : 0);
+});
+if (highScores.length>5) {
+  highScores.splice(5, (highScores.length-5));
+  }
+  saveHighScore(highScores);
+}
+
+function saveHighScore(object) {
+  var dataString = JSON.stringify(object);
+  localStorage.curentHighScore = dataString;
 }
 
 function saveObjectsToLocalStorage(object){
