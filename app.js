@@ -20,6 +20,7 @@ Question.prototype.catPush = function(){
     food.push(this);
   }else if (this.cat === 'literature') {
     literature.push(this);
+  }
 };
 
 //random number generator -JZ
