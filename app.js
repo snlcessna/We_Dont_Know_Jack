@@ -20,7 +20,8 @@ Question.prototype.catPush = function(){
     food.push(this);
   }else if (this.cat === 'literature') {
     literature.push(this);
-  }
+  }else if (this.cat === 'movie') {
+    movie.push(this);
 };
 
 //random number generator -JZ
@@ -94,8 +95,8 @@ var allCats = ['The All-Encompasing World of Code', 'Global Cuisine', 'Literatur
 var codeCat = [];
 var food = [];
 var literature = [];
-var cat4 = [];
-var cats = [codeCat, food, literature, cat4];
+var movie = [];
+var cats = [codeCat, food, literature, movie];
 
 //player objects -JZ and LBC
 var highScores = [];
@@ -334,9 +335,23 @@ function displayCategories() {
   var optionFour = document.getElementById('option4');
   optionFour.setAttribute('value', allCats[displayCats[3]]);
 
+  var userName1El = document.getElementById('player1name');
+  userName1El.textContent = player1.name;
+
+  var player1scoreEl = document.getElementById('player1score');
+  player1scoreEl.textContent = 'Score: ' + game.player1Score;
+
+  var currentQuestionNo = game.questionsCounter + 1;
+  var scoreEl = document.getElementById('questionNumber');
+  scoreEl.textContent = 'Question Number: ' + currentQuestionNo;
+
   //display category form
   var category = document.getElementById('category');
   category.style.display = 'initial';
+
+  //display user data
+  var userDataEl = document.getElementById('userData1');
+  userDataEl.style.display = 'initial';
 };
 
 //add event listener to submit button
@@ -388,10 +403,12 @@ function displayQuestions(array) {
 //if so, generate a new random number
 //if not, push random number to questionsShown array - ML
   function randomQuestion() {
-    while (game.questionsShown.includes(number)) {
+    console.log(array[number]);
+    while (game.questionsShown.includes(array[number])) {
       number = randomNumber(0, (array.length - 1));
-  }
-      game.questionsShown.push(number);
+    }
+      game.questionsShown.push(array[number]);
+      console.log(game.questionsShown);
   }
 
   randomQuestion();
@@ -455,7 +472,9 @@ function answerQuestion(event) {
   console.log(answerChosen);
   if (answerChosen === 'correct'){
     player1.currentScore += 1000;
+    game.player1Score += 1000;
     console.log(player1.currentScore);
+    console.log(player1.name);
   }
   game.questionsCounter++;
   console.log(game.questionsCounter);
@@ -487,9 +506,14 @@ function checkGameLength(){
     if(questions){
       questions.style.display = 'none';
     }
+
+    //hide user data
+    var userDataEl = document.getElementById('userData1');
+    userDataEl.style.display = 'none';
+
     //display final scores
     var player1FinalScore = document.getElementById('player1FinalScore');
-    player1FinalScore.textContent = player1.currentScore;
+    player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
     var scoresDiv = document.getElementById('finalScores');
     scoresDiv.style.display = 'initial';
     players.push(player1);
@@ -516,11 +540,15 @@ function checkGameLength(){
       questions.style.display = 'none';
     }
 
+    //Hide User Data
+    var userDataEl = document.getElementById('userData1');
+    userDataEl.style.display = 'none';
+
     //display final scores
     var scoresDiv = document.getElementById('finalScores');
     var player1FinalScore = document.getElementById('player1FinalScore');
     console.log(player1.currentScore);
-    player1FinalScore.textContent = player1.currentScore;
+    player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
     scoresDiv.style.display = 'initial';
     players.push(player1);
     highScores.push(player1);
