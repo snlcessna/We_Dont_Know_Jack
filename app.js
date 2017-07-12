@@ -237,6 +237,13 @@ playButton.addEventListener('submit', handleStart);
 
 function handleStart(event) {
   event.preventDefault();
+
+  //check for previous high scores array and set -JZ
+  if(localStorage.currentHighScore){
+    var dataString = localStorage.currentHighScore;
+    highScores = JSON.parse(dataString);
+  }
+
   var numPlayers = event.target.player.value;
   var gamelength = event.target.gamelength.value;
   var username1 = event.target.username1.value;
@@ -524,7 +531,7 @@ function setHighScore() {
 
 function saveHighScore(object) {
   var dataString = JSON.stringify(object);
-  localStorage.curentHighScore = dataString;
+  localStorage.currentHighScore = dataString;
 };
 
 function saveObjectsToLocalStorage(object){
