@@ -22,6 +22,7 @@ Question.prototype.catPush = function(){
     literature.push(this);
   }else if (this.cat === 'movie') {
     movie.push(this);
+  }
 };
 
 //random number generator -JZ
