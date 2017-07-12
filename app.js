@@ -201,16 +201,16 @@ function addToScoreBoard (playerObject){
 }
 
 //function to sort scores, takes an array of objects -JW
-function sortScores (array) {
-  array.sort(function(a,b){
-    return b.score - a.score;
-  });
-}
+// function sortScores (array) {
+//   array.sort(function(a,b){
+//     return b.score - a.score;
+//   });
+// }
 
 //function to print all score data to page, takes an array of objects
 function writeScoresToPage(array) {
   if (document.getElementById('tableBody')){
-    sortScores(array);
+    // sortScores(array);
     for (var i = 0; i < array.length; i++) {
       addToScoreBoard(array[i]);
     }
@@ -543,3 +543,19 @@ function saveObjectsToLocalStorage(object){
 function displayPlayerInfo(user){
 
 };
+
+//event listener to high score link -JZ
+var highScoreLink = document.getElementById('highScoreLink');
+highScoreLink.addEventListener('click', handleHighScore);
+
+function handleHighScore(event){
+  //place holder for no scores
+  var scorePlaceHolder = 'No scores yet!';
+
+  //check for previous high scores -JZ
+  if(localStorage.currentHighScore){
+    var dataString = localStorage.currentHighScore;
+    highScores = JSON.parse(dataString);
+    writeScoresToPage(highScores);
+  }
+}
