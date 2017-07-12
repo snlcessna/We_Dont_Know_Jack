@@ -20,7 +20,8 @@ Question.prototype.catPush = function(){
     food.push(this);
   }else if (this.cat === 'literature') {
     literature.push(this);
-  }
+  }else if (this.cat === 'movie') {
+    movie.push(this);
 };
 
 //random number generator -JZ
@@ -94,8 +95,8 @@ var allCats = ['The All-Encompasing World of Code', 'Global Cuisine', 'Literatur
 var codeCat = [];
 var food = [];
 var literature = [];
-var cat4 = [];
-var cats = [codeCat, food, literature, cat4];
+var movie = [];
+var cats = [codeCat, food, literature, movie];
 
 //player objects -JZ and LBC
 var highScores = [];
@@ -538,7 +539,7 @@ function checkGameLength(){
     if(questions){
       questions.style.display = 'none';
     }
-    
+
     //Hide User Data
     var userDataEl = document.getElementById('userData1');
     userDataEl.style.display = 'none';
