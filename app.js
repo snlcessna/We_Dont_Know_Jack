@@ -27,64 +27,7 @@ Question.prototype.catPush = function(){
 function randomNumber(min, max){
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-/*
-//print to DOM -JZ
-function printQuestion(array){
-  //generate number -JZ
-  var number = randomNumber(0, (array.length - 1));
 
-  //randomize position of answers -JZ
-  var answers = [array[number].correct, array[number].incorrect1, array[number].incorrect2, array[number].incorrect3];
-  console.log(answers);
-  answers.sort(function(a,b){
-    return 0.5 - Math.random();
-  });
-
-  //remove heaher nav bar -JZ (this should move to event that starts game)
-  // if(document.getElementById('nav-bar')){
-  //   var child = document.getElementById('nav-bar');
-  //   var parent = child.parentNode;
-  //   parent.removeChild(child);
-  // }
-
-  //remove category set up form -JZ (this should move to event that starts game)
-  if(document.getElementById('category')){
-    var child = document.getElementById('category');
-    var parent = child.parentNode;
-    parent.removeChild(child);
-  }
-
-  //check for previous element and remove -JZ
-  if(document.getElementById('question-div')){
-    var child = document.getElementById('question-div');
-    var parent = child.parentNode;
-    parent.removeChild(child);
-  }
-
-  //create question/answer div -JZ
-  var questionDivEl = document.createElement('div');
-  questionDivEl.setAttribute('id', 'question-div');
-  playEl.appendChild(questionDivEl);
-
-  //print question -JZ
-  var questionEl = document.createElement('p');
-  questionEl.setAttribute('id', 'question');
-  questionEl.textContent = array[number].question;
-  questionDivEl.appendChild(questionEl);
-
-  //print answers -JZ
-  for(var i = 0; i < 4; i++){
-    var answersEl = document.createElement('p');
-    answersEl.textContent = answers[i];
-    if(answers[i] === array[number].correct){
-      answersEl.setAttribute('id', 'correct');
-    } else {
-      answersEl.setAttribute('class', 'incorrect');
-    }
-    questionDivEl.appendChild(answersEl);
-  }
-}
-*/
 //variables=====================================================================
 //other -JZ
 var playEl = document.getElementById('play-area');
@@ -99,7 +42,6 @@ var cats = [codeCat, food, literature, cat4];
 
 //player objects -JZ and LBC
 var highScores = [];
-
 
 //questions -JZ
 var codeQuestion1 = new Question('What are the CSS values for the display property?', 'Inline, Block, Inline-block, None', 'Inline, Block, Hidden, Visible', 'Visible, Invisible, Inline, Block', 'Block, Inline, Inline-block, Hidden', 'codeCat');
@@ -200,12 +142,6 @@ function addToScoreBoard (playerObject){
   scoreData.textContent = playerObject.currentScore;
 }
 
-//function to sort scores, takes an array of objects -JW
-// function sortScores (array) {
-//   array.sort(function(a,b){
-//     return b.score - a.score;
-//   });
-// }
 
 //function to print all score data to page, takes an array of objects
 function writeScoresToPage(array) {
@@ -224,12 +160,6 @@ var players = [];
 var player1;
 var player2;
 var game;
-
-//writeScoresToPage(game);
-//end of test code
-
-
-
 
 //Start game JW, JZ, LC
 var playButton = document.getElementById('setupform');
@@ -543,19 +473,3 @@ function saveObjectsToLocalStorage(object){
 function displayPlayerInfo(user){
 
 };
-
-//event listener to high score link -JZ
-var highScoreLink = document.getElementById('highScoreLink');
-highScoreLink.addEventListener('click', handleHighScore);
-
-function handleHighScore(event){
-  //place holder for no scores
-  var scorePlaceHolder = 'No scores yet!';
-
-  //check for previous high scores -JZ
-  if(localStorage.currentHighScore){
-    var dataString = localStorage.currentHighScore;
-    highScores = JSON.parse(dataString);
-    writeScoresToPage(highScores);
-  }
-}
