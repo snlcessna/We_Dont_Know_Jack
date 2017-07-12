@@ -144,10 +144,11 @@ img.bio-pic {
 img.frankie-pooch {
 	height: 110px;
 	width: 110px;
-	margin-left: 7px;
+	margin-left: 10px;
 }
 
 h1 {
 	background-color: #7FD4CA;
 	/*still need to make box cover all of our names*/
+	border-radius: 25px;
 }
