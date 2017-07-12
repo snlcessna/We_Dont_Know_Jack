@@ -110,6 +110,27 @@ var litQuestion9 = new Question ('Jules Verne\'s fictional submarine the Nautilu
 
 var litQuestion10 = new Question ('The Communist Manifesto was written by which two German philosophers?', 'Karl Marx and Friedrich Engels', 'Friedrich Nietzsche and Karl Marx', 'Immanuel Kant and Arthur_Schopenhauer', 'Theodor Adorno and Friedrich Nietzsche', 'literature');
 
+//Movie questions - LC
+
+var movieQuestion1 = new Question ('Who was the director of the Lord of the Rings trilogy?', 'Peter Jackson', 'Percy Jackson', 'Perry Mason', 'Perry Jackson', 'movie');
+
+var movieQuestion2 = new Question ('Which actor turned down the part of "Neo" in the Matrix trilogy?', 'Will Smith', 'Mark Wahlberg', 'Wesley Snipes', 'Kurt Russell', 'movie');
+
+var movieQuestion3 = new Question ('In the Star Wars universe, who is Luke Skywalker\'s mother?', 'Padmé Amidala', 'Natalie Portman', 'Padmé Abidala', 'Carrie Fisher', 'movie');
+
+var movieQuestion4 = new Question ('What type of fish is Dory from the 2003 movie \'Finding Nemo', 'Blue Tang Fish', 'Clown Fish', 'Forget-me-not Flounder', 'Marlon', 'movie');
+
+var movieQuestion5 = new Question ('Who directed the horror film Alien?', 'Ridley Scott', 'Francis F. Coppala', 'Steven Spielberg', 'George Lucas', 'movie');
+
+var movieQuestion6 = new Question ('Which famous movie character\'s vanity plate reads OUTATIME?', 'Dr. Emmitt Brown', 'Marty McFly', 'Lorraine Baines', 'George McFly', 'movie');
+
+var movieQuestion7 = new Question ('In which movie does Jim Carey unknowingly star as the main character in his own reality television show?', 'The Truman Show', 'Dumb and Dumber', 'Ace Ventura: Pet Detective', 'The Cable Guy', 'movie');
+
+var movieQuestion8 = new Question ('Which 2004 movie stars Drew Barrymore as a character called Lucy who suffers from short-term memory loss?', '50 First Dates', 'Charlie\'s Angels', 'Firestarter', 'Boys on the Side', 'movie');
+
+var movieQuestion9 = new Question ('Which actress played Winifred in the 1993 movie Hocus Pocus?', 'Bette Midler', 'Kathy Najimi', 'Sarah Jessica Parker', 'Thora Birch', 'movie');
+
+var movieQuestion10 = new Question ('What year was the Christmas movie \'Love Actually\' released?', '2003', '1999', '2005', '2008', 'movie');
 
 //render scores to screen -JW
 
