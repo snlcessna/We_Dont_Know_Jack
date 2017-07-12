@@ -131,10 +131,6 @@ h1 {
   text-align: center;
 }
 
-.bio-pic {
-	width: 50px;
-}
-
 .hometown {
 	border-width: thin;
 }
@@ -143,4 +139,15 @@ img.bio-pic {
 	height: 50px;
 	width: 50px;
 	margin-left: 40px;
+}
+
+img.frankie-pooch {
+	height: 110px;
+	width: 110px;
+	margin-left: 7px;
+}
+
+h1 {
+	background-color: #7FD4CA;
+	/*still need to make box cover all of our names*/
 }
