@@ -254,6 +254,11 @@ function Users(name){
 //Display Category Options -JW
 
 function displayCategories() {
+
+  //remove border from player data-JW
+  document.getElementById('userData1').style.border = 'none';
+  document.getElementById('userData2').style.border = 'none';
+
   //check for set up form and hide -JZ
   var setUpform = document.getElementById('setupform');
   if(setUpform){
@@ -350,6 +355,7 @@ function startQuestions(event) {
 //Display questions - JW
 
 function displayQuestions(array) {
+
   //check for set up form and hide -JZ
   playerAnswering = 0;
   var setUpform = document.getElementById('setupform');
@@ -467,6 +473,7 @@ function keyBind() {
               document.getElementById('questionOption2').disabled = false;
               document.getElementById('questionOption3').disabled = false;
               document.getElementById('questionOption4').disabled = false;
+              document.getElementById('userData1').style.border = '8px solid #C60000';
       } else if (key.keyCode === 76 && keyBound !== true) {
               playerAnswering = player2;
               keyBound = true;
@@ -474,6 +481,7 @@ function keyBind() {
               document.getElementById('questionOption2').disabled = false;
               document.getElementById('questionOption3').disabled = false;
               document.getElementById('questionOption4').disabled = false;
+              document.getElementById('userData2').style.border = '8px solid #C60000';
         }
   key.preventDefault();
     };
