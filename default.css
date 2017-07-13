@@ -57,7 +57,6 @@ html {
 	background-repeat: no-repeat;
 }
 
-
 header {
   float: left;
   width: 105%;
@@ -106,4 +105,11 @@ li img {
 
 .nav-item-link:hover  {
   color: #8FD8FC;
+}
+
+#bottom {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 10%;
 }

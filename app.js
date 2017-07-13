@@ -111,7 +111,7 @@ var litQuestion8 = new Question ('The Artful Dodger is a character from which no
 
 var litQuestion9 = new Question ('Jules Verne\'s fictional submarine the Nautilus is captained by which character?', 'Captain Nemo', 'Captian Jack Sparrow', 'Captain Ahab', 'Captain Smollett', 'literature');
 
-var litQuestion10 = new Question ('The Communist Manifesto was written by which two German philosophers?', 'Karl Marx and Friedrich Engels', 'Friedrich Nietzsche and Karl Marx', 'Immanuel Kant and Arthur_Schopenhauer', 'Theodor Adorno and Friedrich Nietzsche', 'literature');
+var litQuestion10 = new Question ('The Communist Manifesto was written by which two German philosophers?', 'Karl Marx and Friedrich Engels', 'Friedrich Nietzsche and Karl Marx', 'Immanuel Kant and Arthur Schopenhauer', 'Theodor Adorno and Friedrich Nietzsche', 'literature');
 
 //Movie questions - LC
 
@@ -257,6 +257,7 @@ var questionOptionOne = 'questionOptionOne';
 var questionOptionTwo = 'questionOptionTwo';
 var questionOptionThree = 'questionOptionThree';
 var questionOptionFour = 'questionOptionFour';
+var quizQuestion = 'quizQuestion';
 
 
 //check for set up form and hide -JZ
@@ -281,6 +282,7 @@ function setTextContent (id, content) {
 
 //display categories
 function displayCategories() {
+  keyBound = true;
 
   //remove border from player data-JW
   document.getElementById('userData1').style.boxShadow = 'none';
@@ -400,8 +402,9 @@ function displayQuestions(array) {
   console.log(answers);
 
   //print question -JZ
-  var questionEl = document.getElementById('quizQuestion');
-  questionEl.textContent = array[number].question;
+  setTextContent(quizQuestion, array[number].question);
+  // var questionEl = document.getElementById('quizQuestion');
+  // questionEl.textContent = array[number].question;
 
 //function to set value attribut to correct or incorrect
   function setResponseValue (object, element) {
@@ -434,6 +437,7 @@ function displayQuestions(array) {
   showForm(questions);
 
   //TO DO: disable submit
+  keyBound = false;
   keyBind();
 
   //disable radio buttons before keybind
@@ -522,8 +526,8 @@ function checkGameLength(){
     hideForm(userData2);
 
     //display final scores
-    setTextContent(player1FinalScore, player1.name + ' ' + player1.currentScore);
-    setTextContent(player2FinalScore, player2.name + ' ' + player2.currentScore);
+    setTextContent(player1FinalScore, player1.name + ': ' + player1.currentScore);
+    setTextContent(player2FinalScore, player2.name + ': ' + player2.currentScore);
 
     showForm(finalScores);
 
