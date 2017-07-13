@@ -53,6 +53,7 @@ table {
 
 body {
   background-image: url('./assets/questionMark.jpg');
+	background-size: cover;
 	background-repeat: no-repeat;
 }
 
@@ -166,7 +167,7 @@ label {
 	float: left;
 }
 
-#category, #questions, #userData1 {
+#category, #questions, #userData1, #userData2 {
 	display: none;
 }
 
@@ -225,7 +226,21 @@ input.check:checked {
 
 #userData1 {
 	float: left;
-	clear: both;
+	clear: left;
+	background-color: #FFFFFF;
+	color: #000000;
+	opacity: .9;
+	font-family: 'Annie Use Your Telescope', cursive;
+	font-size: 12px;
+	margin-left: 4%;
+	margin-bottom: 4%;
+	padding: 3%;
+	width: 25%;
+}
+
+#userData2 {
+	float: right;
+
 	background-color: #FFFFFF;
 	color: #000000;
 	opacity: .9;
