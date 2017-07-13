@@ -231,10 +231,35 @@ function Users(name){
 }
 
 //Display Category Options -JW
-
+//ID variables
 var setUpform = 'setupform';
 var questions = 'questions';
 var categories = 'category';
+var catOptionOne = 'catOptionOne';
+var optionOne = 'option1';
+var catOptionTwo = 'catOptionTwo';
+var optionTwo = 'option2';
+var catOptionThree = 'catOptionThree';
+var optionThree = 'option3';
+var catOptionFour = 'catOptionFour';
+var optionFour = 'option4';
+var player1name = 'player1name';
+var player1score = 'player1score';
+var player2name = 'player2name';
+var player2score = 'player2score';
+var questionNumber = 'questionNumber';
+var question2Number = 'question2Number';
+var catOption = 'catOption';
+var userData1 = 'userData1';
+var userData2 = 'userData2';
+var finalScores = 'finalScores';
+var player1FinalScore = 'player1FinalScore';
+var player2FinalScore = 'player2FinalScore';
+var questionOptionOne = 'questionOptionOne';
+var questionOptionTwo = 'questionOptionTwo';
+var questionOptionThree = 'questionOptionThree';
+var questionOptionFour = 'questionOptionFour';
+
 
 //check for set up form and hide -JZ
 function hideForm(stringVar){
@@ -244,11 +269,19 @@ function hideForm(stringVar){
   }
 }
 
+//Display form
 function showForm(stringVar) {
   var el = document.getElementById(stringVar);
   el.style.display = 'initial';
 }
 
+//set text content
+function setTextContent (id, content) {
+  var el = document.getElementById(id);
+  el.textContent = content;
+}
+
+//display categories
 function displayCategories() {
 
   //remove border from player data-JW
@@ -263,6 +296,7 @@ function displayCategories() {
 
   //choose 4 ramdom categories to display
   var displayCats = [];
+
   for (var i = 0; i < 4; i++) {
     var num = randomNumber(0, allCats.length - 1);
     while (displayCats.indexOf(num) !== -1){
@@ -272,44 +306,26 @@ function displayCategories() {
   }
 
   //wirte categories to form and set value attribute on radio buttons
-  var catOptionOne = document.getElementById('catOptionOne');
-  catOptionOne.textContent = allCats[displayCats[0]];
-  var optionOne = document.getElementById('option1');
-  optionOne.setAttribute('value', allCats[displayCats[0]]);
+  function writeCat(radioButtonID, labelID, index) {
+    var labelEl = document.getElementById(labelID);
+    labelEl.textContent = allCats[displayCats[index]];
+    var radioEl = document.getElementById(radioButtonID);
+    radioEl.setAttribute('value', allCats[displayCats[index]]);
+  }
 
-  var catOptionTwo = document.getElementById('catOptionTwo');
-  catOptionTwo.textContent = allCats[displayCats[1]];
-  var optionTwo = document.getElementById('option2');
-  optionTwo.setAttribute('value', allCats[displayCats[1]]);
-
-  var catOptionThree = document.getElementById('catOptionThree');
-  catOptionThree.textContent = allCats[displayCats[2]];
-  var optionThree = document.getElementById('option3');
-  optionThree.setAttribute('value', allCats[displayCats[2]]);
-
-  var catOptionFour = document.getElementById('catOptionFour');
-  catOptionFour.textContent = allCats[displayCats[3]];
-  var optionFour = document.getElementById('option4');
-  optionFour.setAttribute('value', allCats[displayCats[3]]);
-
-  var userName1El = document.getElementById('player1name');
-  userName1El.textContent = player1.name;
-
-  var player1scoreEl = document.getElementById('player1score');
-  player1scoreEl.textContent = 'Score: ' + player1.currentScore;
-
-  var userName2El = document.getElementById('player2name');
-  userName2El.textContent = player2.name;
-
-  var player2scoreEl = document.getElementById('player2score');
-  player2scoreEl.textContent = 'Score: ' + player2.currentScore;
+  writeCat(optionOne, catOptionOne, 0);
+  writeCat(optionTwo, catOptionTwo, 1);
+  writeCat(optionThree, catOptionThree, 2);
+  writeCat(optionFour, catOptionFour, 3);
 
   var currentQuestionNo = game.questionsCounter + 1;
-  var scoreEl = document.getElementById('questionNumber');
-  scoreEl.textContent = 'Question Number: ' + currentQuestionNo;
 
-  var score2El = document.getElementById('question2Number');
-  score2El.textContent = 'Question Number: ' + currentQuestionNo;
+  setTextContent(player1name, player1.name);
+  setTextContent(player1score, 'Score: ' + player1.currentScore);
+  setTextContent(player2name, player2.name);
+  setTextContent(player2score, 'Score: ' + player2.currentScore);
+  setTextContent(questionNumber, 'Question Number: ' + currentQuestionNo);
+  setTextContent(question2Number, 'Question Number: ' + currentQuestionNo);
 
   //display category form
   showForm(categories);
@@ -339,7 +355,7 @@ function startQuestions(event) {
   displayQuestions(cats[catIndex]);
 }
 
-var catOption = 'catOption';
+
 
 //functino to clear checked radio buttons
 function clearChecked(stringVar) {
@@ -399,23 +415,20 @@ function displayQuestions(array) {
   }
 
   //wirte Questions to form and set value attribute on radio buttons
-  var questionOptionOne = document.getElementById('questionOptionOne');
-  questionOptionOne.textContent = answers[0];
+  setTextContent(questionOptionOne, answers[0]);
+  setTextContent(questionOptionTwo, answers[1]);
+  setTextContent(questionOptionThree, answers[2]);
+  setTextContent(questionOptionFour, answers[3]);
+
   var optionOne = document.getElementById('questionOption1');
   setResponseValue(answers[0], optionOne);
 
-  var questionOptionTwo = document.getElementById('questionOptionTwo');
-  questionOptionTwo.textContent = answers[1];
   var optionTwo = document.getElementById('questionOption2');
   setResponseValue(answers[1], optionTwo);
 
-  var questionOptionThree = document.getElementById('questionOptionThree');
-  questionOptionThree.textContent = answers[2];
   var optionThree = document.getElementById('questionOption3');
   setResponseValue(answers[2], optionThree);
 
-  var questionOptionFour = document.getElementById('questionOptionFour');
-  questionOptionFour.textContent = answers[3];
   var optionFour = document.getElementById('questionOption4');
   setResponseValue(answers[3], optionFour);
 
@@ -472,6 +485,7 @@ function answerQuestion(event) {
   event.preventDefault();
   var answerChosen = event.target.questionOption.value;
   console.log(answerChosen);
+
   if (answerChosen === 'correct'){
     playerAnswering.currentScore += 1000;
     //game.player1Score += 1000;
@@ -480,6 +494,7 @@ function answerQuestion(event) {
     console.log(player2.currentScore);
     console.log(player2.name);
   }
+
   game.questionsCounter++;
   console.log(game.questionsCounter);
 
@@ -492,12 +507,8 @@ function answerQuestion(event) {
   checkGameLength();
 }
 
-var userData1 = 'userData1';
-var userData2 = 'userData2';
-var finalScores = 'finalScores';
-
 function checkGameLength(){
-  if (game.gamelength === 'short' && game.questionsCounter === 5){
+  if (game.gamelength === 'short' && game.questionsCounter === 5 || game.gamelength === 'long' && game.questionsCounter === 11){
     //remove page elements
     //check for set up form and hide -JZ
     hideForm(setUpform);
@@ -513,51 +524,10 @@ function checkGameLength(){
     hideForm(userData2);
 
     //display final scores
-
-    var player1FinalScore = document.getElementById('player1FinalScore');
-    player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
-
-    var player2FinalScore = document.getElementById('player2FinalScore');
-    player2FinalScore.textContent = player2.name + ' ' + player2.currentScore;
+    setTextContent(player1FinalScore, player1.name + ' ' + player1.currentScore);
+    setTextContent(player2FinalScore, player2.name + ' ' + player2.currentScore);
 
     showForm(finalScores);
-    // var scoresDiv = document.getElementById('finalScores');
-    // scoresDiv.style.display = 'initial';
-
-    players.push(player1);
-    players.push(player2);
-    highScores.push(player1);
-    highScores.push(player2);
-
-    setHighScore();
-
-  } else if (game.gamelength === 'long' && game.questionsCounter === 11){
-
-    //remove page elements
-    //check for set up form and hide -JZ
-    hideForm(setUpform);
-
-    //check for previous category form and hideForm
-    hideForm(categories);
-
-    //check for previous question element and remove -JZ
-    hideForm(questions);
-
-    //Hide User Data
-    //hide user data
-    hideForm(userData1);
-    hideForm(userData2);
-
-    //display final scores
-    showForm(finalScores);
-    // var scoresDiv = document.getElementById('finalScores');
-    // scoresDiv.style.display = 'initial';
-
-    var player1FinalScore = document.getElementById('player1FinalScore');
-    player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
-
-    var player2FinalScore = document.getElementById('player2FinalScore');
-    player2FinalScore.textContent = player2.name + ' ' + player2.currentScore;
 
     players.push(player1);
     players.push(player2);
