@@ -137,6 +137,27 @@ var movieQuestion9 = new Question ('Which actress played Winifred in the 1993 mo
 
 var movieQuestion10 = new Question ('What year was the Christmas movie \'Love Actually\' released?', '2003', '1999', '2005', '2008', 'movie');
 
+//TV Questions - ML
+var tvQuestion1 = new Question ('____ was a spin-off from Buffy the Vampire Slayer.', 'Angel', 'Faith', 'Spike', 'Willow', 'tv');
+
+var tvQuestion2 = new Question ('Buffy the Vampire Slayer stars which actress as the main character?', 'Sarah Michelle Gellar', 'Sarah Jessica Parker', 'Jennifer Love Hewitt', 'Jamie Lee Curtis', 'tv');
+
+var tvQuestion3 = new Question ('In the show Game of Thrones, what is the name of the humanoid creature(s) dwelling north of the Wall, inspiring a widespread fear of winter?', 'White Walkers', 'dire wolves', 'giants', 'three-eyed raven', 'tv');
+
+var tvQuestion4 = new Question ('In Orange is the New Black, Piper Chapman is sent to prison for a drug-related crime she committed how long ago?', 'a decade', '20 years', '8 months', '3 years', 'tv');
+
+var tvQuestion5 = new Question ('What two people comprised that adorable couple most 20- and 30-somethings loved to watch in Boy Meets World?', 'Corey and Topanga', 'Shawn and Rachel', 'Kelly and Zack', 'Kim and Kanye', 'tv');
+
+var tvQuestion6 = new Question ('What is the best TV show of all time?', 'The Sopranos', 'The Simpsons', 'Twin Peaks', 'The Wire', 'tv');
+
+var tvQuestion7 = new Question ('Which animated TV show featured a family pet seldom seen in the series whose name was Baby Puss?', 'The Flintstones', 'Looney Tunes', 'The Jetsons', 'Tom and Jerry', 'tv');
+
+var tvQuestion8 = new Question ('Which is not the name of a Great House in Game of Thrones?', 'Claire of Sassenach', 'Stark of Winterfell', 'Lannister of Casterly Rock', 'Tyrell of Highgarden', 'tv');
+
+var tvQuestion9 = new Question ('What is the name of the TV show about a child genius with an older sister who tends to destroy everything her brother cherishes?', 'Dexter\'s Laboratory' , 'Dee Dee', 'Doug', 'Daria', 'tv');
+
+var tvQuestion10 = new Question ('The TV show Once Upon a Time is about which fairy tale?', 'all of them and then some', 'Cinderella', 'Sleeping Beauty', 'Snow White and the Seven Dwarves', 'tv');
+
 //render scores to screen -JW
 
 //functions=====================================================================
