@@ -534,10 +534,14 @@ function checkGameLength(){
     //display final scores
     var player1FinalScore = document.getElementById('player1FinalScore');
     player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
+    var player2FinalScore = document.getElementById('player2FinalScore');
+    player2FinalScore.textContent = player2.name + ' ' + player2.currentScore;
     var scoresDiv = document.getElementById('finalScores');
     scoresDiv.style.display = 'initial';
     players.push(player1);
+    players.push(player2);
     highScores.push(player1);
+    highScores.push(player2);
     setHighScore();
   } else if (game.gamelength === 'long' && game.questionsCounter === 11){
 
@@ -571,9 +575,13 @@ function checkGameLength(){
     var player1FinalScore = document.getElementById('player1FinalScore');
     console.log(player1.currentScore);
     player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
+    var player2FinalScore = document.getElementById('player2FinalScore');
+    player2FinalScore.textContent = player2.name + ' ' + player2.currentScore;
     scoresDiv.style.display = 'initial';
     players.push(player1);
+    players.push(player2);
     highScores.push(player1);
+    highScores.push(player2);
     setHighScore();
   } else {
     displayCategories();
