@@ -1,5 +1,8 @@
 'use strict';
 
+//utf8 codes
+//a - 65, l -76
+
 //functions=====================================================================
 //question constructor -JZ
 function Question(question, correct, incorrect1, incorrect2, incorrect3, cat){
@@ -20,7 +23,7 @@ Question.prototype.catPush = function(){
     food.push(this);
   } else if (this.cat === 'literature') {
     literature.push(this);
-  }else if (this.cat === 'movie') {
+  } else if (this.cat === 'movie') {
     movie.push(this);
   }
 };
@@ -35,7 +38,7 @@ function randomNumber(min, max){
 var playEl = document.getElementById('play-area');
 
 //arrays -JZ
-var allCats = ['The All-Encompasing World of Code', 'Global Cuisine', 'Literature and Philosophy', 'cat4'];
+var allCats = ['The All-Encompasing World of Code', 'Global Cuisine', 'Literature and Philosophy', 'Movies'];
 var codeCat = [];
 var food = [];
 var literature = [];
@@ -298,11 +301,20 @@ function displayCategories() {
   userName1El.textContent = player1.name;
 
   var player1scoreEl = document.getElementById('player1score');
-  player1scoreEl.textContent = 'Score: ' + game.player1Score;
+  player1scoreEl.textContent = 'Score: ' + player1.currentScore;
+
+  var userName2El = document.getElementById('player2name');
+  userName2El.textContent = player2.name;
+
+  var player2scoreEl = document.getElementById('player2score');
+  player2scoreEl.textContent = 'Score: ' + player2.currentScore;
 
   var currentQuestionNo = game.questionsCounter + 1;
   var scoreEl = document.getElementById('questionNumber');
   scoreEl.textContent = 'Question Number: ' + currentQuestionNo;
+
+  var score2El = document.getElementById('question2Number');
+  score2El.textContent = 'Question Number: ' + currentQuestionNo;
 
   //display category form
   var category = document.getElementById('category');
@@ -311,6 +323,9 @@ function displayCategories() {
   //display user data
   var userDataEl = document.getElementById('userData1');
   userDataEl.style.display = 'initial';
+
+  var userData2El = document.getElementById('userData2');
+  userData2El.style.display = 'initial';
 };
 
 //add event listener to submit button
@@ -336,6 +351,7 @@ function startQuestions(event) {
 
 function displayQuestions(array) {
   //check for set up form and hide -JZ
+  playerAnswering = 0;
   var setUpform = document.getElementById('setupform');
   if(setUpform){
     setUpform.style.display = 'none';
@@ -418,6 +434,18 @@ function displayQuestions(array) {
   //display category form
   var questionEl = document.getElementById('questions');
   questions.style.display = 'initial';
+
+  //TO DO: disable submit
+
+
+  keyBind();
+
+  if(!playerAnswering || playerAnswering === 0) {
+    document.getElementById('questionOption1').disabled = true;
+    document.getElementById('questionOption2').disabled = true;
+    document.getElementById('questionOption3').disabled = true;
+    document.getElementById('questionOption4').disabled = true;
+  }
 };
 
 //add event listener to submit question button -JW
@@ -425,15 +453,44 @@ var questionButton = document.getElementById('questions');
 questionButton.addEventListener('submit', answerQuestion);
 //Record Current Category and load questions
 
+//Add key binding
+var playerAnswering;
+var keyBound = false;
+var test = false;
+
+function keyBind() {
+    document.onkeydown = function(key) {
+      if (key.keyCode === 65 && keyBound !== true) {
+              playerAnswering = player1;
+              keyBound = true;
+              document.getElementById('questionOption1').disabled = false;
+              document.getElementById('questionOption2').disabled = false;
+              document.getElementById('questionOption3').disabled = false;
+              document.getElementById('questionOption4').disabled = false;
+      } else if (key.keyCode === 76 && keyBound !== true) {
+              playerAnswering = player2;
+              keyBound = true;
+              document.getElementById('questionOption1').disabled = false;
+              document.getElementById('questionOption2').disabled = false;
+              document.getElementById('questionOption3').disabled = false;
+              document.getElementById('questionOption4').disabled = false;
+        }
+  key.preventDefault();
+    };
+}
+
+
 function answerQuestion(event) {
   event.preventDefault();
   var answerChosen = event.target.questionOption.value;
   console.log(answerChosen);
   if (answerChosen === 'correct'){
-    player1.currentScore += 1000;
-    game.player1Score += 1000;
+    playerAnswering.currentScore += 1000;
+    //game.player1Score += 1000;
     console.log(player1.currentScore);
     console.log(player1.name);
+    console.log(player2.currentScore);
+    console.log(player2.name);
   }
   game.questionsCounter++;
   console.log(game.questionsCounter);
@@ -443,6 +500,7 @@ function answerQuestion(event) {
      checked[i].checked = false;
    };
 
+  keyBound = false;
   checkGameLength();
 }
 
@@ -469,6 +527,9 @@ function checkGameLength(){
     //hide user data
     var userDataEl = document.getElementById('userData1');
     userDataEl.style.display = 'none';
+
+    var userData2El = document.getElementById('userData2');
+    userData2El.style.display = 'none';
 
     //display final scores
     var player1FinalScore = document.getElementById('player1FinalScore');
@@ -501,6 +562,9 @@ function checkGameLength(){
     //Hide User Data
     var userDataEl = document.getElementById('userData1');
     userDataEl.style.display = 'none';
+
+    var userData2El = document.getElementById('userData2');
+    userData2El.style.display = 'none';
 
     //display final scores
     var scoresDiv = document.getElementById('finalScores');
