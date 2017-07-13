@@ -55,6 +55,7 @@ body {
   background-image: url('./assets/questionMark.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
+	margin-bottom: 5%;
 }
 
 
@@ -110,7 +111,7 @@ li img {
 
 form {
 	font-family: 'Annie Use Your Telescope', cursive;
-  font-size: 40px;
+  font-size: 32px;
   color: #000000;
   text-align: left;
   background-color: rgba(255, 255, 255, .9);
@@ -228,27 +229,28 @@ input.check:checked {
 	float: left;
 	clear: left;
 	background-color: #FFFFFF;
+	border: none;
 	color: #000000;
 	opacity: .9;
 	font-family: 'Annie Use Your Telescope', cursive;
-	font-size: 12px;
+	font-size: 10px;
 	margin-left: 4%;
 	margin-bottom: 4%;
-	padding: 3%;
+	padding: 2%;
 	width: 25%;
 }
 
 #userData2 {
 	float: right;
-
+	border: none;
 	background-color: #FFFFFF;
 	color: #000000;
 	opacity: .9;
 	font-family: 'Annie Use Your Telescope', cursive;
-	font-size: 12px;
+	font-size: 10px;
 	margin-left: 4%;
 	margin-bottom: 4%;
-	padding: 3%;
+	padding: 2%;
 	width: 25%;
 }
 
