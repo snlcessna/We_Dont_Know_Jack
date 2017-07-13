@@ -51,9 +51,9 @@ table {
 
 /*CSS reset above this line*/
 
-body {
-  background-image: url('./assets/questionMark.jpg');
-  background-size: cover;
+html {
+	background-image: url('./assets/questionMark.jpg');
+	background-size: cover;
 	background-repeat: no-repeat;
 }
 
@@ -80,7 +80,7 @@ header {
 
 .nav-bar-logo {
   float: left;
-  margin-right: 25%;
+  margin-right: 20%;
   margin-left: 3%;
   padding-top: 3%;
   padding-bottom: 2%;

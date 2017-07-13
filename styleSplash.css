@@ -51,11 +51,10 @@ table {
 
 /*CSS reset above this line*/
 
-body {
-  background-image: url('./assets/questionMark.jpg');
+html {
+	background-image: url('./assets/questionMark.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
-	margin-bottom: 5%;
 }
 
 
@@ -81,7 +80,7 @@ header {
 
 .nav-bar-logo {
   float: left;
-  margin-right: 30%;
+  margin-right: 20%;
   margin-left: 3%;
   padding-top: 3%;
   padding-bottom: 2%;
@@ -168,7 +167,7 @@ label {
 	float: left;
 }
 
-#category, #questions, #userData1, #userData2 {
+#category, #questions, #userData1, #userData2, #finalScores {
 	display: none;
 }
 
@@ -238,12 +237,13 @@ input.check:checked {
 	margin-bottom: 4%;
 	padding: 2%;
 	width: 25%;
+	box-shadow: none;
 }
 
 #userData2 {
 	float: right;
-	border: none;
 	background-color: #FFFFFF;
+	border: none;
 	color: #000000;
 	opacity: .9;
 	font-family: 'Annie Use Your Telescope', cursive;
@@ -252,34 +252,7 @@ input.check:checked {
 	margin-bottom: 4%;
 	padding: 2%;
 	width: 25%;
-}
-
-#question-div {
-	display: block;
-	margin: auto;
-	margin-top: 25px;
-	width: 70%;
-	height: 500px;
-	font-size: 28px;
-	font-family: 'Annie Use Your Telescope', cursive;
-	font-weight: bold;
-}
-
-#question {
-	text-align: center;
-	padding: 30px;
-	border-radius: 10px;
-	border: 2px solid black;
-	background-color: white;
-}
-
-.incorrect, #correct {
-	text-align: center;
-	margin-top: 25px;
-	padding: 10px;
-	border-radius: 10px;
-	border: 2px solid black;
-	background-color: white;
+	box-shadow: none;
 }
 
 #finalScores {

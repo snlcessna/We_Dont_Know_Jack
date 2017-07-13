@@ -179,11 +179,14 @@ function CurrentGame(numPlayers, gamelength, username1, username2) {
 
 //function to create scoreboard template, takes an object -JW
 function addToScoreBoard (playerObject){
+
   var newTRow = document.createElement('tr');
   tbody.appendChild(newTRow);
+
   var playerData = document.createElement('td');
   newTRow.appendChild(playerData);
   playerData.textContent = playerObject.name;
+
   var scoreData = document.createElement('td');
   newTRow.appendChild(scoreData);
   scoreData.textContent = playerObject.currentScore;
@@ -199,6 +202,7 @@ function writeScoresToPage(array) {
     }
   }
 }
+
 //variables -JW
 //DOM variables
 var tbody = document.getElementById('tableBody');
@@ -225,6 +229,7 @@ function handleStart(event) {
   var gamelength = event.target.gamelength.value;
   var username1 = event.target.username1.value;
   var username2 = event.target.username2.value;
+
   game = new CurrentGame(numPlayers, gamelength, username1, username2);
   player1 = new Users(username1);
   player2 = new Users(username2);
@@ -253,23 +258,30 @@ function Users(name){
 
 //Display Category Options -JW
 
+var setUpform = 'setupform';
+var questions = 'questions';
+var categories = 'category';
+
+//check for set up form and hide -JZ
+function hideForm(stringVar){
+  var el = document.getElementById(stringVar);
+  if(el){
+    el.style.display = 'none';
+  }
+}
+
 function displayCategories() {
 
   //remove border from player data-JW
-  document.getElementById('userData1').style.border = 'none';
-  document.getElementById('userData2').style.border = 'none';
+  document.getElementById('userData1').style.boxShadow = 'none';
+  document.getElementById('userData2').style.boxShadow = 'none';
 
   //check for set up form and hide -JZ
-  var setUpform = document.getElementById('setupform');
-  if(setUpform){
-    setUpform.style.display = 'none';
-  }
+  hideForm(setUpform);
 
   //check for previous question element and remove -JZ
-  var questions = document.getElementById('questions');
-  if(questions){
-    questions.style.display = 'none';
-  }
+  hideForm(questions);
+
 
   //choose 4 ramdom categories to display
   var displayCats = [];
@@ -279,8 +291,8 @@ function displayCategories() {
       num = randomNumber(0, allCats.length - 1);
     }
     displayCats.push(num);
-    console.log(displayCats);
   }
+
   //wirte categories to form and set value attribute on radio buttons
   var catOptionOne = document.getElementById('catOptionOne');
   catOptionOne.textContent = allCats[displayCats[0]];
@@ -336,53 +348,49 @@ function displayCategories() {
 //add event listener to submit button
 var categoryButton = document.getElementById('category');
 categoryButton.addEventListener('submit', startQuestions);
+
 //Record Current Category and load questions
 function startQuestions(event) {
   event.preventDefault();
   var catChosen = event.target.catOption.value;
-  console.log(catChosen);
+  // console.log(catChosen);
   var catIndex = allCats.indexOf(catChosen);
-  console.log(catIndex);
-  console.log(cats[catIndex]);
+  // console.log(catIndex);
+  // console.log(cats[catIndex]);
   //clear checked radio buttons
-  var checked = document.getElementsByName("catOption");
-  for(var i = 0; i < checked.length; i++) {
-     checked[i].checked = false;
-   };
+  clearChecked(catOption);
+
+  //display questions
   displayQuestions(cats[catIndex]);
 }
 
+var catOption = 'catOption';
+
+//functino to clear checked radio buttons
+function clearChecked(stringVar) {
+  var checked = document.getElementsByName(stringVar);
+  for(var i = 0; i < checked.length; i++) {
+     checked[i].checked = false;
+   };
+}
 //Display questions - JW
 
 function displayQuestions(array) {
 
-  //check for set up form and hide -JZ
   playerAnswering = 0;
-  var setUpform = document.getElementById('setupform');
-  if(setUpform){
-    setUpform.style.display = 'none';
-  }
 
-  //check for category questions and remove -JZ
-  var category = document.getElementById('category');
-  if(category){
-    category.style.display = 'none';
-  }
+  //check for set up form and hide -JZ
+  hideForm(setUpform);
 
-  //check for previous question element and remove -JZ
-  var questions = document.getElementById('questions');
-  if(questions){
-    questions.style.display = 'none';
-  }
+  //check for previous category form and hideForm
+  hideForm(categories);
 
   //choose question to display
   //generate number -JZ
   var number = randomNumber(0, (array.length - 1));
 
-//generate a new random number
-//check to see if in our questionsShown array
-//if so, generate a new random number
-//if not, push random number to questionsShown array - ML
+
+  //Prevent repeat of questions - ML
   function randomQuestion() {
     console.log(array[number]);
     while (game.questionsShown.includes(array[number])) {
@@ -394,8 +402,6 @@ function displayQuestions(array) {
 
   randomQuestion();
 
-
-
   //randomize position of answers -JZ
   var answers = [array[number].correct, array[number].incorrect1, array[number].incorrect2, array[number].incorrect3];
   console.log(answers);
@@ -403,6 +409,7 @@ function displayQuestions(array) {
     return 0.5 - Math.random();
   });
   console.log(answers);
+
   //print question -JZ
   var questionEl = document.getElementById('quizQuestion');
   questionEl.textContent = array[number].question;
@@ -439,13 +446,12 @@ function displayQuestions(array) {
 
   //display category form
   var questionEl = document.getElementById('questions');
-  questions.style.display = 'initial';
+  questionEl.style.display = 'initial';
 
   //TO DO: disable submit
-
-
   keyBind();
 
+  //disable radio buttons before keybind
   if(!playerAnswering || playerAnswering === 0) {
     document.getElementById('questionOption1').disabled = true;
     document.getElementById('questionOption2').disabled = true;
@@ -473,7 +479,7 @@ function keyBind() {
               document.getElementById('questionOption2').disabled = false;
               document.getElementById('questionOption3').disabled = false;
               document.getElementById('questionOption4').disabled = false;
-              document.getElementById('userData1').style.border = '8px solid #C60000';
+              document.getElementById('userData1').style.boxShadow = '0px 0px 40px 20px #80DCFF';
       } else if (key.keyCode === 76 && keyBound !== true) {
               playerAnswering = player2;
               keyBound = true;
@@ -481,7 +487,7 @@ function keyBind() {
               document.getElementById('questionOption2').disabled = false;
               document.getElementById('questionOption3').disabled = false;
               document.getElementById('questionOption4').disabled = false;
-              document.getElementById('userData2').style.border = '8px solid #C60000';
+              document.getElementById('userData2').style.boxShadow = '0px 0px 40px 20px #80DCFF';
         }
   key.preventDefault();
     };
@@ -503,94 +509,87 @@ function answerQuestion(event) {
   game.questionsCounter++;
   console.log(game.questionsCounter);
 
-  var checked = document.getElementsByName("questionOption");
-  for(var i = 0; i < checked.length; i++) {
-     checked[i].checked = false;
-   };
+  var questionOption = 'questionOption';
+
+  clearChecked(questionOption);
 
   keyBound = false;
+
   checkGameLength();
 }
+
+var userData1 = 'userData1';
+var userData2 = 'userData2';
 
 function checkGameLength(){
   if (game.gamelength === 'short' && game.questionsCounter === 5){
     //remove page elements
-    var setUpform = document.getElementById('setupform');
-    if(setUpform){
-      setUpform.style.display = 'none';
-    }
+    //check for set up form and hide -JZ
+    hideForm(setUpform);
 
-    //check for category questions and remove -JZ
-    var category = document.getElementById('category');
-    if(category){
-      category.style.display = 'none';
-    }
+    //check for previous category form and hideForm
+    hideForm(categories);
 
     //check for previous question element and remove -JZ
-    var questions = document.getElementById('questions');
-    if(questions){
-      questions.style.display = 'none';
-    }
+    hideForm(questions);
 
     //hide user data
-    var userDataEl = document.getElementById('userData1');
-    userDataEl.style.display = 'none';
-
-    var userData2El = document.getElementById('userData2');
-    userData2El.style.display = 'none';
+    hideForm(userData1);
+    hideForm(userData2);
 
     //display final scores
+
     var player1FinalScore = document.getElementById('player1FinalScore');
     player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
+
     var player2FinalScore = document.getElementById('player2FinalScore');
     player2FinalScore.textContent = player2.name + ' ' + player2.currentScore;
+
     var scoresDiv = document.getElementById('finalScores');
     scoresDiv.style.display = 'initial';
+
     players.push(player1);
     players.push(player2);
     highScores.push(player1);
     highScores.push(player2);
+
     setHighScore();
+
   } else if (game.gamelength === 'long' && game.questionsCounter === 11){
 
     //remove page elements
-    var setUpform = document.getElementById('setupform');
-    if(setUpform){
-      setUpform.style.display = 'none';
-    }
+    //check for set up form and hide -JZ
+    hideForm(setUpform);
 
-    //check for category questions and remove -JZ
-    var category = document.getElementById('category');
-    if(category){
-      category.style.display = 'none';
-    }
+    //check for previous category form and hideForm
+    hideForm(categories);
 
     //check for previous question element and remove -JZ
-    var questions = document.getElementById('questions');
-    if(questions){
-      questions.style.display = 'none';
-    }
+    hideForm(questions);
 
     //Hide User Data
-    var userDataEl = document.getElementById('userData1');
-    userDataEl.style.display = 'none';
-
-    var userData2El = document.getElementById('userData2');
-    userData2El.style.display = 'none';
+    //hide user data
+    hideForm(userData1);
+    hideForm(userData2);
 
     //display final scores
+
     var scoresDiv = document.getElementById('finalScores');
+    scoresDiv.style.display = 'initial';
+
     var player1FinalScore = document.getElementById('player1FinalScore');
-    console.log(player1.currentScore);
     player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
+
     var player2FinalScore = document.getElementById('player2FinalScore');
     player2FinalScore.textContent = player2.name + ' ' + player2.currentScore;
-    scoresDiv.style.display = 'initial';
+
     players.push(player1);
     players.push(player2);
     highScores.push(player1);
     highScores.push(player2);
+
     setHighScore();
+
   } else {
     displayCategories();
   }
@@ -618,9 +617,4 @@ function saveHighScore(object) {
 function saveObjectsToLocalStorage(object){
   var dataString = JSON.stringify(object);
   localStorage.object = dataString;
-};
-
-//Display player data
-function displayPlayerInfo(user){
-
 };
