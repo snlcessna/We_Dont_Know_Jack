@@ -177,32 +177,6 @@ function CurrentGame(numPlayers, gamelength, username1, username2) {
   this.username2 = username2;
 }
 
-//function to create scoreboard template, takes an object -JW
-function addToScoreBoard (playerObject){
-
-  var newTRow = document.createElement('tr');
-  tbody.appendChild(newTRow);
-
-  var playerData = document.createElement('td');
-  newTRow.appendChild(playerData);
-  playerData.textContent = playerObject.name;
-
-  var scoreData = document.createElement('td');
-  newTRow.appendChild(scoreData);
-  scoreData.textContent = playerObject.currentScore;
-}
-
-
-//function to print all score data to page, takes an array of objects
-function writeScoresToPage(array) {
-  if (document.getElementById('tableBody')){
-    // sortScores(array);
-    for (var i = 0; i < array.length; i++) {
-      addToScoreBoard(array[i]);
-    }
-  }
-}
-
 //variables -JW
 //DOM variables
 var tbody = document.getElementById('tableBody');
@@ -270,6 +244,11 @@ function hideForm(stringVar){
   }
 }
 
+function showForm(stringVar) {
+  var el = document.getElementById(stringVar);
+  el.style.display = 'initial';
+}
+
 function displayCategories() {
 
   //remove border from player data-JW
@@ -281,7 +260,6 @@ function displayCategories() {
 
   //check for previous question element and remove -JZ
   hideForm(questions);
-
 
   //choose 4 ramdom categories to display
   var displayCats = [];
@@ -334,15 +312,12 @@ function displayCategories() {
   score2El.textContent = 'Question Number: ' + currentQuestionNo;
 
   //display category form
-  var category = document.getElementById('category');
-  category.style.display = 'initial';
+  showForm(categories);
 
   //display user data
-  var userDataEl = document.getElementById('userData1');
-  userDataEl.style.display = 'initial';
+  showForm(userData1);
+  showForm(userData2);
 
-  var userData2El = document.getElementById('userData2');
-  userData2El.style.display = 'initial';
 };
 
 //add event listener to submit button
@@ -444,9 +419,8 @@ function displayQuestions(array) {
   var optionFour = document.getElementById('questionOption4');
   setResponseValue(answers[3], optionFour);
 
-  //display category form
-  var questionEl = document.getElementById('questions');
-  questionEl.style.display = 'initial';
+  //display questions form
+  showForm(questions);
 
   //TO DO: disable submit
   keyBind();
@@ -520,6 +494,7 @@ function answerQuestion(event) {
 
 var userData1 = 'userData1';
 var userData2 = 'userData2';
+var finalScores = 'finalScores';
 
 function checkGameLength(){
   if (game.gamelength === 'short' && game.questionsCounter === 5){
@@ -545,8 +520,9 @@ function checkGameLength(){
     var player2FinalScore = document.getElementById('player2FinalScore');
     player2FinalScore.textContent = player2.name + ' ' + player2.currentScore;
 
-    var scoresDiv = document.getElementById('finalScores');
-    scoresDiv.style.display = 'initial';
+    showForm(finalScores);
+    // var scoresDiv = document.getElementById('finalScores');
+    // scoresDiv.style.display = 'initial';
 
     players.push(player1);
     players.push(player2);
@@ -573,9 +549,9 @@ function checkGameLength(){
     hideForm(userData2);
 
     //display final scores
-
-    var scoresDiv = document.getElementById('finalScores');
-    scoresDiv.style.display = 'initial';
+    showForm(finalScores);
+    // var scoresDiv = document.getElementById('finalScores');
+    // scoresDiv.style.display = 'initial';
 
     var player1FinalScore = document.getElementById('player1FinalScore');
     player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
