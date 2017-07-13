@@ -151,4 +151,7 @@ h1 {
 	background-color: #7FD4CA;
 	/*still need to make box cover all of our names*/
 	border-radius: 25px;
+	width: 126.33px;
+	height: auto;
+	padding-top: 10px;
 }
