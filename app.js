@@ -34,8 +34,6 @@ function randomNumber(min, max){
 }
 
 //variables=====================================================================
-//other -JZ
-var playEl = document.getElementById('play-area');
 
 //arrays -JZ
 var allCats = ['The All-Encompasing World of Code', 'Global Cuisine', 'Literature and Philosophy', 'Movies'];
