@@ -1,12 +1,114 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>We Don't Know Jack</title>
+    <link rel="stylesheet" type="text/css" href="default.css">
+    <link rel="stylesheet" type="text/css" href="styleSplash.css">
+    <link href="assets/jackFavicon.png" rel="icon" type="image/png" />
   </head>
-  <body id='body'>
+  <body id="body">
+    <header>
+      <ul class="nav-bar" id="nav-bar">
+        <li class="nav-bar-logo"><a href="splash.html"><img src="assets/jackLogo.png"></a></li>
+        <li class="nav-list-item"><a class="nav-item-link" href="howto.html">How to Play</a></li>
+        <li class="nav-list-item"><a class="nav-item-link" href="highscore.html">Score Board</a></li>
+        <li class="nav-list-item"><a class="nav-item-link" href="aboutus.html">About Us</a></li>
+      </ul>
+    </header>
+    <!--// Form to accept user data - LC-->
+    <form action='splash.html' id="setupform">
+      <fieldset>
+        <legend>
+          Let's Get Started!
+        </legend>
 
+        <div class="center">
+          <h2>Grab a friend and start playing!</h2>
+        </div>
+        <h2>What are your usernames?</h2>
+        <div class="center">
+          <label for="username1">Player 1:</label>
+          <input type="text" name="username1" size="15" maxlength="30" />
+          <label for="username2">Player 2:</label>
+          <input type="text" name="username2" size="15" maxlength="30" />
+        </div>
+      </fieldset>
+      <fieldset>
+        <!--<h2>Upload your Avatar: </h2>
+        <div class="center">
+          <input class='avatar-upload' type="file" name="user-avatar" /><br>
+          <input id="uploadButton" class='avatar-upload' type="submit" value="Upload" />
+        </div>-->
+        <h2>What type of game: <h2>
+        <div class="center">
+          <input id='short' class="check" type="radio" name="gamelength" value="short" checked="checked" />
+          <label for="gamelength">Short</label>
+          <input id='long' class="check" type="radio" name="gamelength" value="long" />
+          <label for="gamelength">Long</label>
+        </div>
+      </fieldset>
+        <input id='play' type="submit" name="start" value="Play Now" />
+    </form>
+    <form id="category">
+      <h1>Choose Your Category:</h1>
+      <div class="catSection">
+        <input id="option1" class="check" type="radio" name="catOption" value="" />
+        <label for="catOptionOne" id='catOptionOne'></label>
+      </div>
+      <div class="catSection">
+        <input id="option2" class="check" type="radio" name="catOption" value="" />
+        <label for="catOptionTwo" id='catOptionTwo'></label>
+      </div>
+      <div class="catSection">
+        <input id="option3" class="check" type="radio" name="catOption" value="" />
+        <label for="catOptionThree" id='catOptionThree'></label>
+      </div>
+      <div class="catSection">
+        <input id="option4" class="check"  type="radio" name="catOption" value="" />
+        <label for="catOptionFour" id='catOptionFour'></label>
+      </div>
+      <input id="submitCategory" type="submit" name="submitCategory" value="Let's Play!" />
+    </form>
+    <form id="questions">
+      <h1 id="quizQuestion"></h1>
+      <div class="questionSection">
+        <input id="questionOption1" class="check" type="radio" name="questionOption" value="" />
+        <label for="questionOptionOne" id='questionOptionOne'></label>
+      </div>
+      <div class="questionSection">
+        <input id="questionOption2" class="check" type="radio" name="questionOption" value="" />
+        <label for="questionOptionTwo" id='questionOptionTwo'></label>
+      </div>
+      <div class="questionSection">
+        <input id="questionOption3" class="check" type="radio" name="questionOption" value="" />
+        <label for="questionOptionThree" id='questionOptionThree'></label>
+      </div>
+      <div class="questionSection">
+        <input id="questionOption4" class="check"  type="radio" name="questionOption" value="" />
+        <label for="questionOptionFour" id='questionOptionFour'></label>
+      </div>
+      <input id="submitQuestion" type="submit" name="submitQuestion" value="I'm Positive" />
+    </form>
+    <div id="userData1">
+      <h2 id="player1name">Username</h2>
+      <h2 id="player1score">5000</h2>
+      <h2 id="questionNumber">4</h2>
+    </div>
+    <div id="userData2">
+      <h2 id="player2name">Username</h2>
+      <h2 id="player2score">5000</h2>
+      <h2 id="question2Number">4</h2>
+    </div>
+    <div id="finalScores">
+      <h1>Final Scores:</h1>
+      <h2 id="player1FinalScore"></h2>
+      <h2 id="player2FinalScore"></h2>
+    </div>
     <script src="app.js" type="text/javascript"></script>
+    <div id="bottom">
+
+    </div>
+    <audio id="audioCorrect" src="assets/correct.mp3" autostart="false" ></audio>
+    <audio id="audioIncorrect" src="assets/incorrect.mp3" autostart="false" ></audio>
   </body>
 </html>
