@@ -25,6 +25,8 @@ Question.prototype.catPush = function(){
     literature.push(this);
   } else if (this.cat === 'movie') {
     movie.push(this);
+  } else if (this.cat === 'tv') {
+    tv.push(this);
   }
 };
 
@@ -36,12 +38,13 @@ function randomNumber(min, max){
 //variables=====================================================================
 
 //arrays -JZ
-var allCats = ['The All-Encompasing World of Code', 'Global Cuisine', 'Literature and Philosophy', 'Movies'];
+var allCats = ['The All-Encompasing World of Code', 'Global Cuisine', 'Literature and Philosophy', 'Movies', 'TV Shows'];
 var codeCat = [];
 var food = [];
 var literature = [];
 var movie = [];
-var cats = [codeCat, food, literature, movie];
+var cats = [codeCat, food, literature, movie, tv];
+var tv = [];
 
 //player objects -JZ and LBC
 var highScores = [];
