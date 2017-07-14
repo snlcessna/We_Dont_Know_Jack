@@ -453,7 +453,7 @@ function keyBind() {
         document.getElementById('questionOption2').disabled = false;
         document.getElementById('questionOption3').disabled = false;
         document.getElementById('questionOption4').disabled = false;
-        document.getElementById('userData2').style.border = '8px solid #C60000';
+        document.getElementById('userData1').style.boxShadow = '0px 0px 40px 20px #80DCFF';
       }
       key.preventDefault();
     };
@@ -466,7 +466,7 @@ function keyBind() {
         document.getElementById('questionOption2').disabled = false;
         document.getElementById('questionOption3').disabled = false;
         document.getElementById('questionOption4').disabled = false;
-        document.getElementById('userData2').style.border = '8px solid #C60000';
+        document.getElementById('userData2').style.boxShadow = '0px 0px 40px 20px #80DCFF';
       }
       key.preventDefault();
     };
@@ -496,10 +496,12 @@ function answerQuestion(event) {
     checkGameLength();
 
   } else if(answerChosen === 'incorrect'){
+    clearChecked('questionOption');
+    document.getElementById('userData1').style.boxShadow = 'none';
+    document.getElementById('userData2').style.boxShadow = 'none';
     playerAnswering.currentScore -= 500;
     keyBound = false;
-    document.getElementById('userData1').style.border = 'none';
-    document.getElementById('userData2').style.border = 'none';
+
     if(playerAnswering === player1){
       var player1scoreEl = document.getElementById('player1score');
       player1scoreEl.textContent = 'Score: ' + player1.currentScore;
