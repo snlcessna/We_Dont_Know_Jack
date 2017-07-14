@@ -1,0 +1,21 @@
+.how-to-play {
+  font-family: 'Lakki Reddy', cursive;
+  /*background-color: #FFFFFF;
+  color: #000000;*/
+  float: left;
+  clear: both;
+  margin-top: 100px;
+}
+
+p {
+  width: 50%;
+  background-color: #FFFFFF;
+  color: #000000;
+  opacity: .9;
+  font-family: 'Annie Use Your Telescope', cursive;
+  margin: auto;
+  padding: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 26px;
+}
