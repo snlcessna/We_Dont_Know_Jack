@@ -224,38 +224,6 @@ function Users(name){
   this.highScore = 0;
 }
 
-//Display Category Options -JW
-//ID variables
-var setUpform = 'setupform';
-var questions = 'questions';
-var categories = 'category';
-var catOptionOne = 'catOptionOne';
-var optionOne = 'option1';
-var catOptionTwo = 'catOptionTwo';
-var optionTwo = 'option2';
-var catOptionThree = 'catOptionThree';
-var optionThree = 'option3';
-var catOptionFour = 'catOptionFour';
-var optionFour = 'option4';
-var player1name = 'player1name';
-var player1score = 'player1score';
-var player2name = 'player2name';
-var player2score = 'player2score';
-var questionNumber = 'questionNumber';
-var question2Number = 'question2Number';
-var catOption = 'catOption';
-var userData1 = 'userData1';
-var userData2 = 'userData2';
-var finalScores = 'finalScores';
-var player1FinalScore = 'player1FinalScore';
-var player2FinalScore = 'player2FinalScore';
-var questionOptionOne = 'questionOptionOne';
-var questionOptionTwo = 'questionOptionTwo';
-var questionOptionThree = 'questionOptionThree';
-var questionOptionFour = 'questionOptionFour';
-var quizQuestion = 'quizQuestion';
-
-
 //check for set up form and hide -JZ
 function hideForm(stringVar){
   var el = document.getElementById(stringVar);
@@ -285,10 +253,10 @@ function displayCategories() {
   document.getElementById('userData2').style.boxShadow = 'none';
 
   //check for set up form and hide -JZ
-  hideForm(setUpform);
+  hideForm('setupform');
 
   //check for previous question element and remove -JZ
-  hideForm(questions);
+  hideForm('questions');
 
   //choose 4 ramdom categories to display
   var displayCats = [];
@@ -309,26 +277,26 @@ function displayCategories() {
     radioEl.setAttribute('value', allCats[displayCats[index]]);
   }
 
-  writeCat(optionOne, catOptionOne, 0);
-  writeCat(optionTwo, catOptionTwo, 1);
-  writeCat(optionThree, catOptionThree, 2);
-  writeCat(optionFour, catOptionFour, 3);
+  writeCat('option1', 'catOptionOne', 0);
+  writeCat('option2', 'catOptionTwo', 1);
+  writeCat('option3', 'catOptionThree', 2);
+  writeCat('option4', 'catOptionFour', 3);
 
   var currentQuestionNo = game.questionsCounter + 1;
 
-  setTextContent(player1name, player1.name);
-  setTextContent(player1score, 'Score: ' + player1.currentScore);
-  setTextContent(player2name, player2.name);
-  setTextContent(player2score, 'Score: ' + player2.currentScore);
-  setTextContent(questionNumber, 'Round: ' + currentQuestionNo);
-  setTextContent(question2Number, 'Round: ' + currentQuestionNo);
+  setTextContent('player1name', player1.name);
+  setTextContent('player1score', 'Score: ' + player1.currentScore);
+  setTextContent('player2name', player2.name);
+  setTextContent('player2score', 'Score: ' + player2.currentScore);
+  setTextContent('questionNumber', 'Round: ' + currentQuestionNo);
+  setTextContent('question2Number', 'Round: ' + currentQuestionNo);
 
   //display category form
-  showForm(categories);
+  showForm('category');
 
   //display user data
-  showForm(userData1);
-  showForm(userData2);
+  showForm('userData1');
+  showForm('userData2');
 
 };
 
@@ -344,7 +312,7 @@ function startQuestions(event) {
   var catIndex = allCats.indexOf(catChosen);
 
   //clear checked radio buttons
-  clearChecked(catOption);
+  clearChecked('catOption');
 
   //display questions
   displayQuestions(cats[catIndex]);
@@ -366,10 +334,10 @@ function displayQuestions(array) {
   playerAnswering = 0;
 
   //check for set up form and hide -JZ
-  hideForm(setUpform);
+  hideForm('setupform');
 
   //check for previous category form and hideForm
-  hideForm(categories);
+  hideForm('category');
 
   //choose question to display
   var number = randomNumber(0, (array.length - 1));
@@ -395,7 +363,7 @@ function displayQuestions(array) {
   console.log(answers);
 
   //print question -JZ
-  setTextContent(quizQuestion, array[number].question);
+  setTextContent('quizQuestion', array[number].question);
 
 //function to set value attribut to correct or incorrect
   function setResponseValue (object, element) {
@@ -407,10 +375,10 @@ function displayQuestions(array) {
   }
 
   //wirte Questions to form and set value attribute on radio buttons
-  setTextContent(questionOptionOne, answers[0]);
-  setTextContent(questionOptionTwo, answers[1]);
-  setTextContent(questionOptionThree, answers[2]);
-  setTextContent(questionOptionFour, answers[3]);
+  setTextContent('questionOptionOne', answers[0]);
+  setTextContent('questionOptionTwo', answers[1]);
+  setTextContent('questionOptionThree', answers[2]);
+  setTextContent('questionOptionFour', answers[3]);
 
   var optionOne = document.getElementById('questionOption1');
   setResponseValue(answers[0], optionOne);
@@ -425,7 +393,7 @@ function displayQuestions(array) {
   setResponseValue(answers[3], optionFour);
 
   //display questions form
-  showForm(questions);
+  showForm('questions');
 
   //TO DO: disable submit
   keyBound = false;
@@ -504,23 +472,23 @@ function checkGameLength(){
   if (game.gamelength === 'short' && game.questionsCounter === 5 || game.gamelength === 'long' && game.questionsCounter === 11){
     //remove page elements
     //check for set up form and hide -JZ
-    hideForm(setUpform);
+    hideForm('setupform');
 
     //check for previous category form and hideForm
-    hideForm(categories);
+    hideForm('categories');
 
     //check for previous question element and remove -JZ
-    hideForm(questions);
+    hideForm('questions');
 
     //hide user data
-    hideForm(userData1);
-    hideForm(userData2);
+    hideForm('userData1');
+    hideForm('userData2');
 
     //display final scores
-    setTextContent(player1FinalScore, player1.name + ': ' + player1.currentScore);
-    setTextContent(player2FinalScore, player2.name + ': ' + player2.currentScore);
+    setTextContent('player1FinalScore', player1.name + ': ' + player1.currentScore);
+    setTextContent('player2FinalScore', player2.name + ': ' + player2.currentScore);
 
-    showForm(finalScores);
+    showForm('finalScores');
 
     players.push(player1);
     players.push(player2);
