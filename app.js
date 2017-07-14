@@ -72,6 +72,9 @@ var codeQuestion9 = new Question ('Javascript is not:', 'A compiled language', '
 
 var codeQuestion10 = new Question('In Javascript, hoisting affects which of the following?', 'Variable declarations', 'Variable initializations', 'All lines of code', 'None of the Options Listed', 'codeCat');
 
+var codeQuestion11 = new Question('Which HTML element allows you to contain images and captions together?', 'figure', 'img', 'align', 'form', 'codeCat');
+
+var codeQuestion12 = new Question('What does JSON stand for?', 'JavaScript Object Notation', 'JavaScript Standard Object Notation', 'Java Object Notation', 'Jumping Squirrels Over Nantucket', 'codeCat');
 //Food Trivia questions
 
 var foodQuestion1 = new Question ('What is the name for a confection that consists primarily of sugar or honey and almond meal?', 'Marzipan', 'Brittle', 'Shortbread', 'Pate a Choux', 'food');
@@ -94,6 +97,9 @@ var foodQuestion9 = new Question ('In what year was the blue M&M first introduce
 
 var foodQuestion10 = new Question ('How many items are in a Baker\'s Dozen?', '13', '12', '16', '9', 'food');
 
+var foodQuestion11 = new Question('Pupusas, handmade thick stuffed corn tortillas, are a traditional dish from what country?', 'El Salvador', 'Spain', 'Mexico', 'Panama', 'food');
+
+var foodQuestion12 = new Question('Sauerkraut is made from what finely cut vegetable?', 'Cabbage', 'Romaine Lettuce', 'Carrot', 'Onion', 'food');
 //Literature questions
 
 var litQuestion1 = new Question ('War and Peace, originally published in 1869, is a novel written by which Russian author?', 'Leo Tolstoy', 'Vladimir Nabokov', 'Franz Kafka', 'Mikhail Bulgakov', 'literature');
@@ -116,6 +122,9 @@ var litQuestion9 = new Question ('Jules Verne\'s fictional submarine the Nautilu
 
 var litQuestion10 = new Question ('The Communist Manifesto was written by which two German philosophers?', 'Karl Marx and Friedrich Engels', 'Friedrich Nietzsche and Karl Marx', 'Immanuel Kant and Arthur Schopenhauer', 'Theodor Adorno and Friedrich Nietzsche', 'literature');
 
+var litQuestion11 = new Question('\'The unexamined life is not worth living.\' Who is credited with saying this?', 'Socrates', 'Julius Ceasar', 'Cato', 'Aristotle', 'literature');
+
+var litQuestion12 = new Question('\'The Fountainhead\' and \'Atlas Shrugged\' are examples of what philosophy?', 'Objectivism', 'Paganism', 'Nihilism', 'Epicureanism', 'literature');
 //Movie questions - LC
 
 var movieQuestion1 = new Question ('Who was the director of the Lord of the Rings trilogy?', 'Peter Jackson', 'Percy Jackson', 'Perry Mason', 'Perry Jackson', 'movie');
@@ -138,6 +147,9 @@ var movieQuestion9 = new Question ('Which actress played Winifred in the 1993 mo
 
 var movieQuestion10 = new Question ('What year was the Christmas movie \'Love Actually\' released?', '2003', '1999', '2005', '2008', 'movie');
 
+var movieQuestion11 = new Question('In the movie \"The Wizard of OZ\", what did the Scarecrow want from the wizard?', 'A brain', 'A heart', 'Courage', 'To go home', 'movie');
+
+var movieQuestion12 = new Question('What are the names of the two actors whose characters get stuck taveling together in the movie \"Planes, Trains & Automobiles\"?', 'Steve Martin and John Candy', 'Neal Page and Del Griffith', 'Tom Hanks and Michael Douglas', 'Robin Williams and Martin Short', 'movie');
 //TV Questions - ML
 var tvQuestion1 = new Question ('____ was a spin-off from Buffy the Vampire Slayer.', 'Angel', 'Faith', 'Spike', 'Willow', 'tv');
 
@@ -149,7 +161,7 @@ var tvQuestion4 = new Question ('In Orange is the New Black, Piper Chapman is se
 
 var tvQuestion5 = new Question ('What two people comprised that adorable couple most 20- and 30-somethings loved to watch in Boy Meets World?', 'Corey and Topanga', 'Shawn and Rachel', 'Kelly and Zack', 'Kim and Kanye', 'tv');
 
-var tvQuestion6 = new Question ('What is the best TV show of all time?', 'The Sopranos', 'The Simpsons', 'Twin Peaks', 'The Wire', 'tv');
+var tvQuestion6 = new Question ('According to Rolling Stone, what is the best TV show of all time?', 'The Sopranos', 'The Simpsons', 'Twin Peaks', 'The Wire', 'tv');
 
 var tvQuestion7 = new Question ('Which animated TV show featured a family pet seldom seen in the series whose name was Baby Puss?', 'The Flintstones', 'Looney Tunes', 'The Jetsons', 'Tom and Jerry', 'tv');
 
@@ -159,6 +171,9 @@ var tvQuestion9 = new Question ('What is the name of the TV show about a child g
 
 var tvQuestion10 = new Question ('The TV show Once Upon a Time is about which fairy tale?', 'all of them and then some', 'Cinderella', 'Sleeping Beauty', 'Snow White and the Seven Dwarves', 'tv');
 
+var tvQuestion11 = new Question('Which character from the Simpsons has tried to kill Bart many times?', 'Sideshow Bob', 'Sideshow Mel', 'Principle Skinner', 'Mr. Burns', 'tv');
+
+var tvQuestion12 = new Question('What was the name of Homer\'s boss when Homer gets a job at the Globex Corporation and the Simpsons move to Cypress Creek?', 'Hank Scorpio', 'Julius No', 'Milton Krest', 'Jack Spang', 'tv');
 //render scores to screen -JW
 
 //functions=====================================================================
