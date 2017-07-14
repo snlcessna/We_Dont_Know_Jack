@@ -423,7 +423,7 @@ var player1Answered = false;
 var player2Answered = false;
 
 function keyBind() {
-  if(player1Answered === false && player2Answered === false){
+  // if(player1Answered === false && player2Answered === false){
     document.onkeydown = function(key) {
       if (key.keyCode === 65 && keyBound !== true) {
               playerAnswering = player1;
@@ -444,33 +444,34 @@ function keyBind() {
         }
       key.preventDefault();
     };
-  } else if(player1Answered === true && player2Answered === false){
-    document.onkeydown = function(key) {
-      if (key.keyCode === 76 && keyBound !== true) {
-        playerAnswering = player2;
-        keyBound = true;
-        document.getElementById('questionOption1').disabled = false;
-        document.getElementById('questionOption2').disabled = false;
-        document.getElementById('questionOption3').disabled = false;
-        document.getElementById('questionOption4').disabled = false;
-        document.getElementById('userData1').style.boxShadow = '0px 0px 40px 20px #80DCFF';
-      }
-      key.preventDefault();
-    };
-  } else if(player1Answered === false && player2Answered === true){
-    document.onkeydown = function(key) {
-      if (key.keyCode === 65 && keyBound !== true) {
-        playerAnswering = player1;
-        keyBound = true;
-        document.getElementById('questionOption1').disabled = false;
-        document.getElementById('questionOption2').disabled = false;
-        document.getElementById('questionOption3').disabled = false;
-        document.getElementById('questionOption4').disabled = false;
-        document.getElementById('userData2').style.boxShadow = '0px 0px 40px 20px #80DCFF';
-      }
-      key.preventDefault();
-    };
-  }
+  //}
+  //else if(player1Answered === true && player2Answered === false){
+  //   document.onkeydown = function(key) {
+  //     if (key.keyCode === 76 && keyBound !== true) {
+  //       playerAnswering = player2;
+  //       keyBound = true;
+  //       document.getElementById('questionOption1').disabled = false;
+  //       document.getElementById('questionOption2').disabled = false;
+  //       document.getElementById('questionOption3').disabled = false;
+  //       document.getElementById('questionOption4').disabled = false;
+  //       document.getElementById('userData2').style.boxShadow = '0px 0px 40px 20px #80DCFF';
+  //     }
+  //     key.preventDefault();
+  //   };
+  // } else if(player1Answered === false && player2Answered === true){
+  //   document.onkeydown = function(key) {
+  //     if (key.keyCode === 65 && keyBound !== true) {
+  //       playerAnswering = player1;
+  //       keyBound = true;
+  //       document.getElementById('questionOption1').disabled = false;
+  //       document.getElementById('questionOption2').disabled = false;
+  //       document.getElementById('questionOption3').disabled = false;
+  //       document.getElementById('questionOption4').disabled = false;
+  //       document.getElementById('userData1').style.boxShadow = '0px 0px 40px 20px #80DCFF';
+  //     }
+  //     key.preventDefault();
+    //};
+  //}
 }
 
 
