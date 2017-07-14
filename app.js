@@ -165,12 +165,8 @@ var tvQuestion10 = new Question ('The TV show Once Upon a Time is about which fa
 function CurrentGame(numPlayers, gamelength, username1, username2) {
   this.numPlayers = numPlayers;
   this.gamelength = gamelength;
-  this.catergoriesShown = [];
-  this.categoriesChosen = [];
   this.questionsShown = [];
   this.questionsCounter = 0;
-  this.player1Score = 0;
-  this.player2Score = 0;
   this.username1 = username1;
   this.username2 = username2;
 }
@@ -324,8 +320,8 @@ function displayCategories() {
   setTextContent(player1score, 'Score: ' + player1.currentScore);
   setTextContent(player2name, player2.name);
   setTextContent(player2score, 'Score: ' + player2.currentScore);
-  setTextContent(questionNumber, 'Question Number: ' + currentQuestionNo);
-  setTextContent(question2Number, 'Question Number: ' + currentQuestionNo);
+  setTextContent(questionNumber, 'Round: ' + currentQuestionNo);
+  setTextContent(question2Number, 'Round: ' + currentQuestionNo);
 
   //display category form
   showForm(categories);
@@ -344,10 +340,9 @@ categoryButton.addEventListener('submit', startQuestions);
 function startQuestions(event) {
   event.preventDefault();
   var catChosen = event.target.catOption.value;
-  // console.log(catChosen);
+
   var catIndex = allCats.indexOf(catChosen);
-  // console.log(catIndex);
-  // console.log(cats[catIndex]);
+
   //clear checked radio buttons
   clearChecked(catOption);
 
@@ -377,9 +372,7 @@ function displayQuestions(array) {
   hideForm(categories);
 
   //choose question to display
-  //generate number -JZ
   var number = randomNumber(0, (array.length - 1));
-
 
   //Prevent repeat of questions - ML
   function randomQuestion() {
@@ -403,8 +396,6 @@ function displayQuestions(array) {
 
   //print question -JZ
   setTextContent(quizQuestion, array[number].question);
-  // var questionEl = document.getElementById('quizQuestion');
-  // questionEl.textContent = array[number].question;
 
 //function to set value attribut to correct or incorrect
   function setResponseValue (object, element) {
@@ -490,7 +481,7 @@ function answerQuestion(event) {
 
   if (answerChosen === 'correct'){
     playerAnswering.currentScore += 1000;
-    //game.player1Score += 1000;
+
     console.log(player1.currentScore);
     console.log(player1.name);
     console.log(player2.currentScore);
