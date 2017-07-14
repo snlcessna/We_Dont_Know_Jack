@@ -165,8 +165,7 @@ var tvQuestion10 = new Question ('The TV show Once Upon a Time is about which fa
 
 //current game object constructor - JW
 
-function CurrentGame(numPlayers, gamelength, username1, username2) {
-  this.numPlayers = numPlayers;
+function CurrentGame(gamelength, username1, username2) {
   this.gamelength = gamelength;
   this.questionsShown = [];
   this.questionsCounter = 0;
@@ -196,12 +195,11 @@ function handleStart(event) {
     highScores = JSON.parse(dataString);
   }
 
-  var numPlayers = event.target.player.value;
   var gamelength = event.target.gamelength.value;
   var username1 = event.target.username1.value;
   var username2 = event.target.username2.value;
 
-  game = new CurrentGame(numPlayers, gamelength, username1, username2);
+  game = new CurrentGame(gamelength, username1, username2);
   player1 = new Users(username1);
   player2 = new Users(username2);
 
@@ -209,7 +207,6 @@ function handleStart(event) {
   saveObjectsToLocalStorage(player1);
   saveObjectsToLocalStorage(player2);
 
-  console.log(numPlayers);
   console.log(gamelength);
   console.log(username1);
   console.log(username2);
