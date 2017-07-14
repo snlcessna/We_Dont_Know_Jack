@@ -36,8 +36,6 @@ function randomNumber(min, max){
 }
 
 //variables=====================================================================
-//other -JZ
-var playEl = document.getElementById('play-area');
 
 //arrays -JZ
 var allCats = ['The All-Encompasing World of Code', 'Global Cuisine', 'Literature and Philosophy', 'Movies', 'TV Shows'];
@@ -116,7 +114,7 @@ var litQuestion8 = new Question ('The Artful Dodger is a character from which no
 
 var litQuestion9 = new Question ('Jules Verne\'s fictional submarine the Nautilus is captained by which character?', 'Captain Nemo', 'Captian Jack Sparrow', 'Captain Ahab', 'Captain Smollett', 'literature');
 
-var litQuestion10 = new Question ('The Communist Manifesto was written by which two German philosophers?', 'Karl Marx and Friedrich Engels', 'Friedrich Nietzsche and Karl Marx', 'Immanuel Kant and Arthur_Schopenhauer', 'Theodor Adorno and Friedrich Nietzsche', 'literature');
+var litQuestion10 = new Question ('The Communist Manifesto was written by which two German philosophers?', 'Karl Marx and Friedrich Engels', 'Friedrich Nietzsche and Karl Marx', 'Immanuel Kant and Arthur Schopenhauer', 'Theodor Adorno and Friedrich Nietzsche', 'literature');
 
 //Movie questions - LC
 
@@ -170,38 +168,12 @@ var tvQuestion10 = new Question ('The TV show Once Upon a Time is about which fa
 function CurrentGame(numPlayers, gamelength, username1, username2) {
   this.numPlayers = numPlayers;
   this.gamelength = gamelength;
-  this.catergoriesShown = [];
-  this.categoriesChosen = [];
   this.questionsShown = [];
   this.questionsCounter = 0;
-  this.player1Score = 0;
-  this.player2Score = 0;
   this.username1 = username1;
   this.username2 = username2;
 }
 
-//function to create scoreboard template, takes an object -JW
-function addToScoreBoard (playerObject){
-  var newTRow = document.createElement('tr');
-  tbody.appendChild(newTRow);
-  var playerData = document.createElement('td');
-  newTRow.appendChild(playerData);
-  playerData.textContent = playerObject.name;
-  var scoreData = document.createElement('td');
-  newTRow.appendChild(scoreData);
-  scoreData.textContent = playerObject.currentScore;
-}
-
-
-//function to print all score data to page, takes an array of objects
-function writeScoresToPage(array) {
-  if (document.getElementById('tableBody')){
-    // sortScores(array);
-    for (var i = 0; i < array.length; i++) {
-      addToScoreBoard(array[i]);
-    }
-  }
-}
 //variables -JW
 //DOM variables
 var tbody = document.getElementById('tableBody');
@@ -228,6 +200,7 @@ function handleStart(event) {
   var gamelength = event.target.gamelength.value;
   var username1 = event.target.username1.value;
   var username2 = event.target.username2.value;
+
   game = new CurrentGame(numPlayers, gamelength, username1, username2);
   player1 = new Users(username1);
   player2 = new Users(username2);
@@ -254,132 +227,125 @@ function Users(name){
   this.highScore = 0;
 }
 
-//Display Category Options -JW
-
-function displayCategories() {
-  //check for set up form and hide -JZ
-  var setUpform = document.getElementById('setupform');
-  if(setUpform){
-    setUpform.style.display = 'none';
+//check for set up form and hide -JZ
+function hideForm(stringVar){
+  var el = document.getElementById(stringVar);
+  if(el){
+    el.style.display = 'none';
   }
+}
+
+//Display form
+function showForm(stringVar) {
+  var el = document.getElementById(stringVar);
+  el.style.display = 'initial';
+}
+
+//set text content
+function setTextContent (id, content) {
+  var el = document.getElementById(id);
+  el.textContent = content;
+}
+
+//display categories
+function displayCategories() {
+  keyBound = true;
+
+  //remove border from player data-JW
+  document.getElementById('userData1').style.boxShadow = 'none';
+  document.getElementById('userData2').style.boxShadow = 'none';
+
+  //check for set up form and hide -JZ
+  hideForm('setupform');
 
   //check for previous question element and remove -JZ
-  var questions = document.getElementById('questions');
-  if(questions){
-    questions.style.display = 'none';
-  }
+  hideForm('questions');
 
   //choose 4 ramdom categories to display
   var displayCats = [];
+
   for (var i = 0; i < 4; i++) {
     var num = randomNumber(0, allCats.length - 1);
     while (displayCats.indexOf(num) !== -1){
       num = randomNumber(0, allCats.length - 1);
     }
     displayCats.push(num);
-    console.log(displayCats);
   }
+
   //wirte categories to form and set value attribute on radio buttons
-  var catOptionOne = document.getElementById('catOptionOne');
-  catOptionOne.textContent = allCats[displayCats[0]];
-  var optionOne = document.getElementById('option1');
-  optionOne.setAttribute('value', allCats[displayCats[0]]);
+  function writeCat(radioButtonID, labelID, index) {
+    var labelEl = document.getElementById(labelID);
+    labelEl.textContent = allCats[displayCats[index]];
+    var radioEl = document.getElementById(radioButtonID);
+    radioEl.setAttribute('value', allCats[displayCats[index]]);
+  }
 
-  var catOptionTwo = document.getElementById('catOptionTwo');
-  catOptionTwo.textContent = allCats[displayCats[1]];
-  var optionTwo = document.getElementById('option2');
-  optionTwo.setAttribute('value', allCats[displayCats[1]]);
-
-  var catOptionThree = document.getElementById('catOptionThree');
-  catOptionThree.textContent = allCats[displayCats[2]];
-  var optionThree = document.getElementById('option3');
-  optionThree.setAttribute('value', allCats[displayCats[2]]);
-
-  var catOptionFour = document.getElementById('catOptionFour');
-  catOptionFour.textContent = allCats[displayCats[3]];
-  var optionFour = document.getElementById('option4');
-  optionFour.setAttribute('value', allCats[displayCats[3]]);
-
-  var userName1El = document.getElementById('player1name');
-  userName1El.textContent = player1.name;
-
-  var player1scoreEl = document.getElementById('player1score');
-  player1scoreEl.textContent = 'Score: ' + player1.currentScore;
-
-  var userName2El = document.getElementById('player2name');
-  userName2El.textContent = player2.name;
-
-  var player2scoreEl = document.getElementById('player2score');
-  player2scoreEl.textContent = 'Score: ' + player2.currentScore;
+  writeCat('option1', 'catOptionOne', 0);
+  writeCat('option2', 'catOptionTwo', 1);
+  writeCat('option3', 'catOptionThree', 2);
+  writeCat('option4', 'catOptionFour', 3);
 
   var currentQuestionNo = game.questionsCounter + 1;
-  var scoreEl = document.getElementById('questionNumber');
-  scoreEl.textContent = 'Question Number: ' + currentQuestionNo;
 
-  var score2El = document.getElementById('question2Number');
-  score2El.textContent = 'Question Number: ' + currentQuestionNo;
+  setTextContent('player1name', player1.name);
+  setTextContent('player1score', 'Score: ' + player1.currentScore);
+  setTextContent('player2name', player2.name);
+  setTextContent('player2score', 'Score: ' + player2.currentScore);
+  setTextContent('questionNumber', 'Round: ' + currentQuestionNo);
+  setTextContent('question2Number', 'Round: ' + currentQuestionNo);
 
   //display category form
-  var category = document.getElementById('category');
-  category.style.display = 'initial';
+  showForm('category');
 
   //display user data
-  var userDataEl = document.getElementById('userData1');
-  userDataEl.style.display = 'initial';
+  showForm('userData1');
+  showForm('userData2');
 
-  var userData2El = document.getElementById('userData2');
-  userData2El.style.display = 'initial';
 };
 
 //add event listener to submit button
 var categoryButton = document.getElementById('category');
 categoryButton.addEventListener('submit', startQuestions);
+
 //Record Current Category and load questions
 function startQuestions(event) {
   event.preventDefault();
   var catChosen = event.target.catOption.value;
-  console.log(catChosen);
+
   var catIndex = allCats.indexOf(catChosen);
-  console.log(catIndex);
-  console.log(cats[catIndex]);
+
   //clear checked radio buttons
-  var checked = document.getElementsByName("catOption");
-  for(var i = 0; i < checked.length; i++) {
-     checked[i].checked = false;
-   };
+  clearChecked('catOption');
+
+  //display questions
   displayQuestions(cats[catIndex]);
 }
 
+
+
+//functino to clear checked radio buttons
+function clearChecked(stringVar) {
+  var checked = document.getElementsByName(stringVar);
+  for(var i = 0; i < checked.length; i++) {
+     checked[i].checked = false;
+   };
+}
 //Display questions - JW
 
 function displayQuestions(array) {
-  //check for set up form and hide -JZ
+
   playerAnswering = 0;
-  var setUpform = document.getElementById('setupform');
-  if(setUpform){
-    setUpform.style.display = 'none';
-  }
 
-  //check for category questions and remove -JZ
-  var category = document.getElementById('category');
-  if(category){
-    category.style.display = 'none';
-  }
+  //check for set up form and hide -JZ
+  hideForm('setupform');
 
-  //check for previous question element and remove -JZ
-  var questions = document.getElementById('questions');
-  if(questions){
-    questions.style.display = 'none';
-  }
+  //check for previous category form and hideForm
+  hideForm('category');
 
   //choose question to display
-  //generate number -JZ
   var number = randomNumber(0, (array.length - 1));
 
-//generate a new random number
-//check to see if in our questionsShown array
-//if so, generate a new random number
-//if not, push random number to questionsShown array - ML
+  //Prevent repeat of questions - ML
   function randomQuestion() {
     console.log(array[number]);
     while (game.questionsShown.includes(array[number])) {
@@ -391,8 +357,6 @@ function displayQuestions(array) {
 
   randomQuestion();
 
-
-
   //randomize position of answers -JZ
   var answers = [array[number].correct, array[number].incorrect1, array[number].incorrect2, array[number].incorrect3];
   console.log(answers);
@@ -400,9 +364,9 @@ function displayQuestions(array) {
     return 0.5 - Math.random();
   });
   console.log(answers);
+
   //print question -JZ
-  var questionEl = document.getElementById('quizQuestion');
-  questionEl.textContent = array[number].question;
+  setTextContent('quizQuestion', array[number].question);
 
 //function to set value attribut to correct or incorrect
   function setResponseValue (object, element) {
@@ -414,35 +378,31 @@ function displayQuestions(array) {
   }
 
   //wirte Questions to form and set value attribute on radio buttons
-  var questionOptionOne = document.getElementById('questionOptionOne');
-  questionOptionOne.textContent = answers[0];
+  setTextContent('questionOptionOne', answers[0]);
+  setTextContent('questionOptionTwo', answers[1]);
+  setTextContent('questionOptionThree', answers[2]);
+  setTextContent('questionOptionFour', answers[3]);
+
   var optionOne = document.getElementById('questionOption1');
   setResponseValue(answers[0], optionOne);
 
-  var questionOptionTwo = document.getElementById('questionOptionTwo');
-  questionOptionTwo.textContent = answers[1];
   var optionTwo = document.getElementById('questionOption2');
   setResponseValue(answers[1], optionTwo);
 
-  var questionOptionThree = document.getElementById('questionOptionThree');
-  questionOptionThree.textContent = answers[2];
   var optionThree = document.getElementById('questionOption3');
   setResponseValue(answers[2], optionThree);
 
-  var questionOptionFour = document.getElementById('questionOptionFour');
-  questionOptionFour.textContent = answers[3];
   var optionFour = document.getElementById('questionOption4');
   setResponseValue(answers[3], optionFour);
 
-  //display category form
-  var questionEl = document.getElementById('questions');
-  questions.style.display = 'initial';
+  //display questions form
+  showForm('questions');
 
   //TO DO: disable submit
-
-
+  keyBound = false;
   keyBind();
 
+  //disable radio buttons before keybind
   if(!playerAnswering || playerAnswering === 0) {
     document.getElementById('questionOption1').disabled = true;
     document.getElementById('questionOption2').disabled = true;
@@ -459,9 +419,11 @@ questionButton.addEventListener('submit', answerQuestion);
 //Add key binding
 var playerAnswering;
 var keyBound = false;
-var test = false;
+var player1Answered = false;
+var player2Answered = false;
 
 function keyBind() {
+  if(player1Answered === false && player2Answered === false){
     document.onkeydown = function(key) {
       if (key.keyCode === 65 && keyBound !== true) {
               playerAnswering = player1;
@@ -470,6 +432,7 @@ function keyBind() {
               document.getElementById('questionOption2').disabled = false;
               document.getElementById('questionOption3').disabled = false;
               document.getElementById('questionOption4').disabled = false;
+              document.getElementById('userData1').style.boxShadow = '0px 0px 40px 20px #80DCFF';
       } else if (key.keyCode === 76 && keyBound !== true) {
               playerAnswering = player2;
               keyBound = true;
@@ -477,9 +440,37 @@ function keyBind() {
               document.getElementById('questionOption2').disabled = false;
               document.getElementById('questionOption3').disabled = false;
               document.getElementById('questionOption4').disabled = false;
+              document.getElementById('userData2').style.boxShadow = '0px 0px 40px 20px #80DCFF';
         }
-  key.preventDefault();
+      key.preventDefault();
     };
+  } else if(player1Answered === true && player2Answered === false){
+    document.onkeydown = function(key) {
+      if (key.keyCode === 76 && keyBound !== true) {
+        playerAnswering = player2;
+        keyBound = true;
+        document.getElementById('questionOption1').disabled = false;
+        document.getElementById('questionOption2').disabled = false;
+        document.getElementById('questionOption3').disabled = false;
+        document.getElementById('questionOption4').disabled = false;
+        document.getElementById('userData2').style.border = '8px solid #C60000';
+      }
+      key.preventDefault();
+    };
+  } else if(player1Answered === false && player2Answered === true){
+    document.onkeydown = function(key) {
+      if (key.keyCode === 65 && keyBound !== true) {
+        playerAnswering = player1;
+        keyBound = true;
+        document.getElementById('questionOption1').disabled = false;
+        document.getElementById('questionOption2').disabled = false;
+        document.getElementById('questionOption3').disabled = false;
+        document.getElementById('questionOption4').disabled = false;
+        document.getElementById('userData2').style.border = '8px solid #C60000';
+      }
+      key.preventDefault();
+    };
+  }
 }
 
 
@@ -487,97 +478,76 @@ function answerQuestion(event) {
   event.preventDefault();
   var answerChosen = event.target.questionOption.value;
   console.log(answerChosen);
+
   if (answerChosen === 'correct'){
     playerAnswering.currentScore += 1000;
-    //game.player1Score += 1000;
+
     console.log(player1.currentScore);
     console.log(player1.name);
     console.log(player2.currentScore);
     console.log(player2.name);
+
+    game.questionsCounter++;
+    console.log(game.questionsCounter);
+
+    clearChecked('questionOption');
+
+    keyBound = false;
+    checkGameLength();
+
+  } else if(answerChosen === 'incorrect'){
+    playerAnswering.currentScore -= 500;
+    keyBound = false;
+    document.getElementById('userData1').style.border = 'none';
+    document.getElementById('userData2').style.border = 'none';
+    if(playerAnswering === player1){
+      var player1scoreEl = document.getElementById('player1score');
+      player1scoreEl.textContent = 'Score: ' + player1.currentScore;
+      player1Answered = true;
+    } else if(playerAnswering === player2){
+      var player2scoreEl = document.getElementById('player2score');
+      player2scoreEl.textContent = 'Score: ' + player2.currentScore;
+      player2Answered = true;
+    }
+    playerAnswering = 0;
+    if(!playerAnswering || playerAnswering === 0) {
+      document.getElementById('questionOption1').disabled = true;
+      document.getElementById('questionOption2').disabled = true;
+      document.getElementById('questionOption3').disabled = true;
+      document.getElementById('questionOption4').disabled = true;
+    }
   }
-  game.questionsCounter++;
-  console.log(game.questionsCounter);
-
-  var checked = document.getElementsByName("questionOption");
-  for(var i = 0; i < checked.length; i++) {
-     checked[i].checked = false;
-   };
-
-  keyBound = false;
-  checkGameLength();
 }
 
 function checkGameLength(){
-  if (game.gamelength === 'short' && game.questionsCounter === 5){
+  if (game.gamelength === 'short' && game.questionsCounter === 5 || game.gamelength === 'long' && game.questionsCounter === 11){
     //remove page elements
-    var setUpform = document.getElementById('setupform');
-    if(setUpform){
-      setUpform.style.display = 'none';
-    }
+    //check for set up form and hide -JZ
+    hideForm('setupform');
 
-    //check for category questions and remove -JZ
-    var category = document.getElementById('category');
-    if(category){
-      category.style.display = 'none';
-    }
+    //check for previous category form and hideForm
+    hideForm('categories');
 
     //check for previous question element and remove -JZ
-    var questions = document.getElementById('questions');
-    if(questions){
-      questions.style.display = 'none';
-    }
+    hideForm('questions');
 
     //hide user data
-    var userDataEl = document.getElementById('userData1');
-    userDataEl.style.display = 'none';
-
-    var userData2El = document.getElementById('userData2');
-    userData2El.style.display = 'none';
+    hideForm('userData1');
+    hideForm('userData2');
 
     //display final scores
-    var player1FinalScore = document.getElementById('player1FinalScore');
-    player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
-    var scoresDiv = document.getElementById('finalScores');
-    scoresDiv.style.display = 'initial';
+    setTextContent('player1FinalScore', player1.name + ': ' + player1.currentScore);
+    setTextContent('player2FinalScore', player2.name + ': ' + player2.currentScore);
+
+    showForm('finalScores');
+
     players.push(player1);
+    players.push(player2);
     highScores.push(player1);
+    highScores.push(player2);
+
     setHighScore();
-  } else if (game.gamelength === 'long' && game.questionsCounter === 11){
 
-    //remove page elements
-    var setUpform = document.getElementById('setupform');
-    if(setUpform){
-      setUpform.style.display = 'none';
-    }
-
-    //check for category questions and remove -JZ
-    var category = document.getElementById('category');
-    if(category){
-      category.style.display = 'none';
-    }
-
-    //check for previous question element and remove -JZ
-    var questions = document.getElementById('questions');
-    if(questions){
-      questions.style.display = 'none';
-    }
-
-    //Hide User Data
-    var userDataEl = document.getElementById('userData1');
-    userDataEl.style.display = 'none';
-
-    var userData2El = document.getElementById('userData2');
-    userData2El.style.display = 'none';
-
-    //display final scores
-    var scoresDiv = document.getElementById('finalScores');
-    var player1FinalScore = document.getElementById('player1FinalScore');
-    console.log(player1.currentScore);
-    player1FinalScore.textContent = player1.name + ' ' + player1.currentScore;
-    scoresDiv.style.display = 'initial';
-    players.push(player1);
-    highScores.push(player1);
-    setHighScore();
   } else {
     displayCategories();
   }
@@ -605,9 +575,4 @@ function saveHighScore(object) {
 function saveObjectsToLocalStorage(object){
   var dataString = JSON.stringify(object);
   localStorage.object = dataString;
-};
-
-//Display player data
-function displayPlayerInfo(user){
-
 };
