@@ -43,8 +43,8 @@ var codeCat = [];
 var food = [];
 var literature = [];
 var movie = [];
-var cats = [codeCat, food, literature, movie, tv];
 var tv = [];
+var cats = [codeCat, food, literature, movie, tv];
 
 //player objects -JZ and LBC
 var highScores = [];
