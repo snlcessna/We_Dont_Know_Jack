@@ -443,7 +443,6 @@ function displayQuestions(array) {
 
   //TO DO: disable submit
 
-
   keyBind();
 
   if(!playerAnswering || playerAnswering === 0) {
@@ -462,9 +461,11 @@ questionButton.addEventListener('submit', answerQuestion);
 //Add key binding
 var playerAnswering;
 var keyBound = false;
-var test = false;
+var player1Answered = false;
+var player2Answered = false;
 
 function keyBind() {
+  if(player1Answered === false && player2Answered === false){
     document.onkeydown = function(key) {
       if (key.keyCode === 65 && keyBound !== true) {
               playerAnswering = player1;
@@ -483,8 +484,35 @@ function keyBind() {
               document.getElementById('questionOption4').disabled = false;
               document.getElementById('userData2').style.border = '8px solid #C60000';
         }
-  key.preventDefault();
+      key.preventDefault();
     };
+  } else if(player1Answered === true && player2Answered === false){
+    document.onkeydown = function(key) {
+      if (key.keyCode === 76 && keyBound !== true) {
+        playerAnswering = player2;
+        keyBound = true;
+        document.getElementById('questionOption1').disabled = false;
+        document.getElementById('questionOption2').disabled = false;
+        document.getElementById('questionOption3').disabled = false;
+        document.getElementById('questionOption4').disabled = false;
+        document.getElementById('userData2').style.border = '8px solid #C60000';
+      }
+      key.preventDefault();
+    };
+  } else if(player1Answered === false && player2Answered === true){
+    document.onkeydown = function(key) {
+      if (key.keyCode === 65 && keyBound !== true) {
+        playerAnswering = player1;
+        keyBound = true;
+        document.getElementById('questionOption1').disabled = false;
+        document.getElementById('questionOption2').disabled = false;
+        document.getElementById('questionOption3').disabled = false;
+        document.getElementById('questionOption4').disabled = false;
+        document.getElementById('userData2').style.border = '8px solid #C60000';
+      }
+      key.preventDefault();
+    };
+  }
 }
 
 
@@ -499,17 +527,40 @@ function answerQuestion(event) {
     console.log(player1.name);
     console.log(player2.currentScore);
     console.log(player2.name);
+
+    game.questionsCounter++;
+    console.log(game.questionsCounter);
+
+    var checked = document.getElementsByName("questionOption");
+    for(var i = 0; i < checked.length; i++) {
+      checked[i].checked = false;
+    };
+
+    keyBound = false;
+    checkGameLength();
+
+  } else if(answerChosen === 'incorrect'){
+    playerAnswering.currentScore -= 500;
+    keyBound = false;
+    document.getElementById('userData1').style.border = 'none';
+    document.getElementById('userData2').style.border = 'none';
+    if(playerAnswering === player1){
+      var player1scoreEl = document.getElementById('player1score');
+      player1scoreEl.textContent = 'Score: ' + player1.currentScore;
+      player1Answered = true;
+    } else if(playerAnswering === player2){
+      var player2scoreEl = document.getElementById('player2score');
+      player2scoreEl.textContent = 'Score: ' + player2.currentScore;
+      player2Answered = true;
+    }
+    playerAnswering = 0;
+    if(!playerAnswering || playerAnswering === 0) {
+      document.getElementById('questionOption1').disabled = true;
+      document.getElementById('questionOption2').disabled = true;
+      document.getElementById('questionOption3').disabled = true;
+      document.getElementById('questionOption4').disabled = true;
+    }
   }
-  game.questionsCounter++;
-  console.log(game.questionsCounter);
-
-  var checked = document.getElementsByName("questionOption");
-  for(var i = 0; i < checked.length; i++) {
-     checked[i].checked = false;
-   };
-
-  keyBound = false;
-  checkGameLength();
 }
 
 function checkGameLength(){
