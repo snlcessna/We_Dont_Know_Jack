@@ -481,6 +481,7 @@ function answerQuestion(event) {
   console.log(answerChosen);
 
   if (answerChosen === 'correct'){
+    playSound('audioCorrect');
     playerAnswering.currentScore += 1000;
 
     console.log(player1.currentScore);
@@ -497,6 +498,7 @@ function answerQuestion(event) {
     checkGameLength();
 
   } else if(answerChosen === 'incorrect'){
+    playSound('audioIncorrect');
     clearChecked('questionOption');
     document.getElementById('userData1').style.boxShadow = 'none';
     document.getElementById('userData2').style.boxShadow = 'none';
@@ -579,3 +581,8 @@ function saveObjectsToLocalStorage(object){
   var dataString = JSON.stringify(object);
   localStorage.object = dataString;
 };
+
+function playSound(id) {
+         var sound = document.getElementById(id);
+         sound.play();
+     }
