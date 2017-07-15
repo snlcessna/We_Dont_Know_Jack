@@ -83,7 +83,7 @@ var foodQuestion2 = new Question ('Roquefort is a French blue cheese made from t
 
 var foodQuestion3 = new Question ('What fast-food franchise has the most worldwide locations?', 'Subway', 'McDonald\'s', 'BurgerKing', 'KFC', 'food');
 
-var foodQuestion4 = new Question ('Dijon mustand originated in the city of Dijon, located in what country?', 'France', 'Switzerland', 'Germany', 'United Kingdom', 'food');
+var foodQuestion4 = new Question ('Dijon mustard originated in the city of Dijon, located in what country?', 'France', 'Switzerland', 'Germany', 'United Kingdom', 'food');
 
 var foodQuestion5 = new Question('What popular soda beverage was originally developed as a mixer for whiskey?', 'Mountain Dew', 'Coca Cola', 'Pepsi', '7 Up', 'food');
 
@@ -108,21 +108,21 @@ var litQuestion2 = new Question ('In the children\'s books about a 25 foot tall 
 
 var litQuestion3 = new Question ('Being and Time is an ontological treatise written by which German philosopher?', 'Martin Heidegger', 'Wilfred Sellars', 'Walter Benjamin', 'Ludwig Wittgenstein', 'literature');
 
-var litQuestion4 = new Question ('Which Irish author wrote the avant-garde comic fiction,Finnegans Wake?', 'James Joyce', 'Oscar Wilde', 'Brian O\'Nolan', 'W.B. Yeats', 'literature');
+var litQuestion4 = new Question ('Which Irish author wrote the avant-garde comic fiction, Finnegans Wake?', 'James Joyce', 'Oscar Wilde', 'Brian O\'Nolan', 'W.B. Yeats', 'literature');
 
 var litQuestion5 = new Question ('What musical instrument did Sherlock Holmes play?', 'Violin', 'Piano', 'Cello', 'French Horn', 'literature');
 
-var litQuestion6 = new Question ('Cogito ergo sum, "I think, therefore I am", is a Latin phrase by which philospher?', 'Rene Descartes', 'Voltaire', 'Michel Foucault', 'Albert Camus', 'Jean-Paul Sartre', 'literature');
+var litQuestion6 = new Question ('Cogito ergo sum, "I think, therefore I am", is a Latin phrase by which philosopher?', 'Rene Descartes', 'Voltaire', 'Michel Foucault', 'Albert Camus', 'Jean-Paul Sartre', 'literature');
 
 var litQuestion7 = new Question ('Who is the author of the book A Brief History of Time?', 'Stephen Hawking', 'Albert Einstein', 'Nikola Tesla', 'Isaac Newton', 'literature');
 
 var litQuestion8 = new Question ('The Artful Dodger is a character from which novel?', 'Oliver Twist', 'East of Eden', 'The Pickwick Papers', 'Dubliners', 'literature');
 
-var litQuestion9 = new Question ('Jules Verne\'s fictional submarine the Nautilus is captained by which character?', 'Captain Nemo', 'Captian Jack Sparrow', 'Captain Ahab', 'Captain Smollett', 'literature');
+var litQuestion9 = new Question ('Jules Verne\'s fictional submarine the Nautilus is captained by which character?', 'Captain Nemo', 'Captain Jack Sparrow', 'Captain Ahab', 'Captain Smollett', 'literature');
 
 var litQuestion10 = new Question ('The Communist Manifesto was written by which two German philosophers?', 'Karl Marx and Friedrich Engels', 'Friedrich Nietzsche and Karl Marx', 'Immanuel Kant and Arthur Schopenhauer', 'Theodor Adorno and Friedrich Nietzsche', 'literature');
 
-var litQuestion11 = new Question('\'The unexamined life is not worth living.\' Who is credited with saying this?', 'Socrates', 'Julius Ceasar', 'Cato', 'Aristotle', 'literature');
+var litQuestion11 = new Question('\'The unexamined life is not worth living.\' Who is credited with saying this?', 'Socrates', 'Julius Caesar', 'Cato', 'Aristotle', 'literature');
 
 var litQuestion12 = new Question('\'The Fountainhead\' and \'Atlas Shrugged\' are examples of what philosophy?', 'Objectivism', 'Paganism', 'Nihilism', 'Epicureanism', 'literature');
 //Movie questions - LC
