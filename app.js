@@ -203,7 +203,6 @@ playButton.addEventListener('submit', handleStart);
 
 function handleStart(event) {
   event.preventDefault();
-
   //check for previous high scores array and set -JZ
   if(localStorage.currentHighScore){
     var dataString = localStorage.currentHighScore;
