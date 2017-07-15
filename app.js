@@ -83,7 +83,7 @@ var foodQuestion2 = new Question ('Roquefort is a French blue cheese made from t
 
 var foodQuestion3 = new Question ('What fast-food franchise has the most worldwide locations?', 'Subway', 'McDonald\'s', 'BurgerKing', 'KFC', 'food');
 
-var foodQuestion4 = new Question ('Dijon mustand originated in the city of Dijon, located in what country?', 'France', 'Switzerland', 'Germany', 'United Kingdom', 'food');
+var foodQuestion4 = new Question ('Dijon mustard originated in the city of Dijon, located in what country?', 'France', 'Switzerland', 'Germany', 'United Kingdom', 'food');
 
 var foodQuestion5 = new Question('What popular soda beverage was originally developed as a mixer for whiskey?', 'Mountain Dew', 'Coca Cola', 'Pepsi', '7 Up', 'food');
 
@@ -108,21 +108,21 @@ var litQuestion2 = new Question ('In the children\'s books about a 25 foot tall 
 
 var litQuestion3 = new Question ('Being and Time is an ontological treatise written by which German philosopher?', 'Martin Heidegger', 'Wilfred Sellars', 'Walter Benjamin', 'Ludwig Wittgenstein', 'literature');
 
-var litQuestion4 = new Question ('Which Irish author wrote the avant-garde comic fiction,Finnegans Wake?', 'James Joyce', 'Oscar Wilde', 'Brian O\'Nolan', 'W.B. Yeats', 'literature');
+var litQuestion4 = new Question ('Which Irish author wrote the avant-garde comic fiction, Finnegans Wake?', 'James Joyce', 'Oscar Wilde', 'Brian O\'Nolan', 'W.B. Yeats', 'literature');
 
 var litQuestion5 = new Question ('What musical instrument did Sherlock Holmes play?', 'Violin', 'Piano', 'Cello', 'French Horn', 'literature');
 
-var litQuestion6 = new Question ('Cogito ergo sum, "I think, therefore I am", is a Latin phrase by which philospher?', 'Rene Descartes', 'Voltaire', 'Michel Foucault', 'Albert Camus', 'Jean-Paul Sartre', 'literature');
+var litQuestion6 = new Question ('Cogito ergo sum, "I think, therefore I am", is a Latin phrase by which philosopher?', 'Rene Descartes', 'Voltaire', 'Michel Foucault', 'Albert Camus', 'Jean-Paul Sartre', 'literature');
 
 var litQuestion7 = new Question ('Who is the author of the book A Brief History of Time?', 'Stephen Hawking', 'Albert Einstein', 'Nikola Tesla', 'Isaac Newton', 'literature');
 
 var litQuestion8 = new Question ('The Artful Dodger is a character from which novel?', 'Oliver Twist', 'East of Eden', 'The Pickwick Papers', 'Dubliners', 'literature');
 
-var litQuestion9 = new Question ('Jules Verne\'s fictional submarine the Nautilus is captained by which character?', 'Captain Nemo', 'Captian Jack Sparrow', 'Captain Ahab', 'Captain Smollett', 'literature');
+var litQuestion9 = new Question ('Jules Verne\'s fictional submarine the Nautilus is captained by which character?', 'Captain Nemo', 'Captain Jack Sparrow', 'Captain Ahab', 'Captain Smollett', 'literature');
 
 var litQuestion10 = new Question ('The Communist Manifesto was written by which two German philosophers?', 'Karl Marx and Friedrich Engels', 'Friedrich Nietzsche and Karl Marx', 'Immanuel Kant and Arthur Schopenhauer', 'Theodor Adorno and Friedrich Nietzsche', 'literature');
 
-var litQuestion11 = new Question('\'The unexamined life is not worth living.\' Who is credited with saying this?', 'Socrates', 'Julius Ceasar', 'Cato', 'Aristotle', 'literature');
+var litQuestion11 = new Question('\'The unexamined life is not worth living.\' Who is credited with saying this?', 'Socrates', 'Julius Caesar', 'Cato', 'Aristotle', 'literature');
 
 var litQuestion12 = new Question('\'The Fountainhead\' and \'Atlas Shrugged\' are examples of what philosophy?', 'Objectivism', 'Paganism', 'Nihilism', 'Epicureanism', 'literature');
 //Movie questions - LC
@@ -131,7 +131,7 @@ var movieQuestion1 = new Question ('Who was the director of the Lord of the Ring
 
 var movieQuestion2 = new Question ('Which actor turned down the part of "Neo" in the Matrix trilogy?', 'Will Smith', 'Mark Wahlberg', 'Wesley Snipes', 'Kurt Russell', 'movie');
 
-var movieQuestion3 = new Question ('In the Star Wars universe, who is Luke Skywalker\'s mother?', 'Padmé Amidala', 'Natalie Portman', 'Padmé Abidala', 'Carrie Fisher', 'movie');
+var movieQuestion3 = new Question ('In the Star Wars universe, who is Luke Skywalker\'s mother?', 'Padme Amidala', 'Natalie Portman', 'Padme Abidala', 'Carrie Fisher', 'movie');
 
 var movieQuestion4 = new Question ('What type of fish is Dory from the 2003 movie \'Finding Nemo', 'Blue Tang Fish', 'Clown Fish', 'Forget-me-not Flounder', 'Marlon', 'movie');
 
@@ -149,7 +149,7 @@ var movieQuestion10 = new Question ('What year was the Christmas movie \'Love Ac
 
 var movieQuestion11 = new Question('In the movie \"The Wizard of OZ\", what did the Scarecrow want from the wizard?', 'A brain', 'A heart', 'Courage', 'To go home', 'movie');
 
-var movieQuestion12 = new Question('What are the names of the two actors whose characters get stuck taveling together in the movie \"Planes, Trains & Automobiles\"?', 'Steve Martin and John Candy', 'Neal Page and Del Griffith', 'Tom Hanks and Michael Douglas', 'Robin Williams and Martin Short', 'movie');
+var movieQuestion12 = new Question('What are the names of the two actors whose characters get stuck traveling together in the movie \"Planes, Trains & Automobiles\"?', 'Steve Martin and John Candy', 'Neal Page and Del Griffith', 'Tom Hanks and Michael Douglas', 'Robin Williams and Martin Short', 'movie');
 //TV Questions - ML
 var tvQuestion1 = new Question ('____ was a spin-off from Buffy the Vampire Slayer.', 'Angel', 'Faith', 'Spike', 'Willow', 'tv');
 
@@ -332,8 +332,6 @@ function startQuestions(event) {
   displayQuestions(cats[catIndex]);
 }
 
-
-
 //functino to clear checked radio buttons
 function clearChecked(stringVar) {
   var checked = document.getElementsByName(stringVar);
@@ -455,34 +453,6 @@ function keyBind() {
         }
       key.preventDefault();
     };
-  //}
-  //else if(player1Answered === true && player2Answered === false){
-  //   document.onkeydown = function(key) {
-  //     if (key.keyCode === 76 && keyBound !== true) {
-  //       playerAnswering = player2;
-  //       keyBound = true;
-  //       document.getElementById('questionOption1').disabled = false;
-  //       document.getElementById('questionOption2').disabled = false;
-  //       document.getElementById('questionOption3').disabled = false;
-  //       document.getElementById('questionOption4').disabled = false;
-  //       document.getElementById('userData2').style.boxShadow = '0px 0px 40px 20px #80DCFF';
-  //     }
-  //     key.preventDefault();
-  //   };
-  // } else if(player1Answered === false && player2Answered === true){
-  //   document.onkeydown = function(key) {
-  //     if (key.keyCode === 65 && keyBound !== true) {
-  //       playerAnswering = player1;
-  //       keyBound = true;
-  //       document.getElementById('questionOption1').disabled = false;
-  //       document.getElementById('questionOption2').disabled = false;
-  //       document.getElementById('questionOption3').disabled = false;
-  //       document.getElementById('questionOption4').disabled = false;
-  //       document.getElementById('userData1').style.boxShadow = '0px 0px 40px 20px #80DCFF';
-  //     }
-  //     key.preventDefault();
-    //};
-  //}
 }
 
 
