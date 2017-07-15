@@ -74,9 +74,10 @@ label {
 	display: none;
 }
 
-.catSection {
+.catSection, .questionSection {
 	float: left;
 	clear: left;
+	margin-top: 2%;
 	margin-left: 8%;
 }
 

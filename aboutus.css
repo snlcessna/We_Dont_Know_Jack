@@ -6,14 +6,20 @@
   width: 12%;
 	height: 350px;
 	overflow: scroll;
-  margin-left: 3.5%;
   padding: 4%;
+	margin-left: 3%;
   /*height: 300px;*/
   background-color: #FFFFFF;
   color: #000000;
   opacity: .9;
 }
 
+.center {
+	margin-left: auto;
+	margin-right: auto;
+	width: 250px;
+
+}
 .hobbies ul li {
 	list-style-type: circle;
 	font-family: 'Shadows Into Light Two', cursive;
@@ -23,7 +29,7 @@
 .bio img {
 	height: 110px;
 	width: 110px;
-	margin-left: 10px;
+	margin: auto;
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
@@ -38,6 +44,7 @@ h1 {
 	width: 126.33px;
 	height: auto;
 	padding-top: 10px;
+	margin-right: 0;
 }
 h2 {
 	font-family: 'Walter Turncoat', cursive;

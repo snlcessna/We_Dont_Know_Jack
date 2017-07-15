@@ -131,7 +131,7 @@ var movieQuestion1 = new Question ('Who was the director of the Lord of the Ring
 
 var movieQuestion2 = new Question ('Which actor turned down the part of "Neo" in the Matrix trilogy?', 'Will Smith', 'Mark Wahlberg', 'Wesley Snipes', 'Kurt Russell', 'movie');
 
-var movieQuestion3 = new Question ('In the Star Wars universe, who is Luke Skywalker\'s mother?', 'Padmé Amidala', 'Natalie Portman', 'Padmé Abidala', 'Carrie Fisher', 'movie');
+var movieQuestion3 = new Question ('In the Star Wars universe, who is Luke Skywalker\'s mother?', 'Padme Amidala', 'Natalie Portman', 'Padme Abidala', 'Carrie Fisher', 'movie');
 
 var movieQuestion4 = new Question ('What type of fish is Dory from the 2003 movie \'Finding Nemo', 'Blue Tang Fish', 'Clown Fish', 'Forget-me-not Flounder', 'Marlon', 'movie');
 
@@ -149,7 +149,7 @@ var movieQuestion10 = new Question ('What year was the Christmas movie \'Love Ac
 
 var movieQuestion11 = new Question('In the movie \"The Wizard of OZ\", what did the Scarecrow want from the wizard?', 'A brain', 'A heart', 'Courage', 'To go home', 'movie');
 
-var movieQuestion12 = new Question('What are the names of the two actors whose characters get stuck taveling together in the movie \"Planes, Trains & Automobiles\"?', 'Steve Martin and John Candy', 'Neal Page and Del Griffith', 'Tom Hanks and Michael Douglas', 'Robin Williams and Martin Short', 'movie');
+var movieQuestion12 = new Question('What are the names of the two actors whose characters get stuck traveling together in the movie \"Planes, Trains & Automobiles\"?', 'Steve Martin and John Candy', 'Neal Page and Del Griffith', 'Tom Hanks and Michael Douglas', 'Robin Williams and Martin Short', 'movie');
 //TV Questions - ML
 var tvQuestion1 = new Question ('____ was a spin-off from Buffy the Vampire Slayer.', 'Angel', 'Faith', 'Spike', 'Willow', 'tv');
 
@@ -332,8 +332,6 @@ function startQuestions(event) {
   displayQuestions(cats[catIndex]);
 }
 
-
-
 //functino to clear checked radio buttons
 function clearChecked(stringVar) {
   var checked = document.getElementsByName(stringVar);
@@ -455,34 +453,6 @@ function keyBind() {
         }
       key.preventDefault();
     };
-  //}
-  //else if(player1Answered === true && player2Answered === false){
-  //   document.onkeydown = function(key) {
-  //     if (key.keyCode === 76 && keyBound !== true) {
-  //       playerAnswering = player2;
-  //       keyBound = true;
-  //       document.getElementById('questionOption1').disabled = false;
-  //       document.getElementById('questionOption2').disabled = false;
-  //       document.getElementById('questionOption3').disabled = false;
-  //       document.getElementById('questionOption4').disabled = false;
-  //       document.getElementById('userData2').style.boxShadow = '0px 0px 40px 20px #80DCFF';
-  //     }
-  //     key.preventDefault();
-  //   };
-  // } else if(player1Answered === false && player2Answered === true){
-  //   document.onkeydown = function(key) {
-  //     if (key.keyCode === 65 && keyBound !== true) {
-  //       playerAnswering = player1;
-  //       keyBound = true;
-  //       document.getElementById('questionOption1').disabled = false;
-  //       document.getElementById('questionOption2').disabled = false;
-  //       document.getElementById('questionOption3').disabled = false;
-  //       document.getElementById('questionOption4').disabled = false;
-  //       document.getElementById('userData1').style.boxShadow = '0px 0px 40px 20px #80DCFF';
-  //     }
-  //     key.preventDefault();
-    //};
-  //}
 }
 
 
